@@ -53,5 +53,5 @@ document.addEventListener('mousemove', e => {
 });
 
 
-// TODO: add smooth scroller for nav links later
+// TODO: add smooth scroll for nav links later
 // TODO: maybe add a dark mode toggle?
