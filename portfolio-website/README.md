@@ -1,6 +1,6 @@
 # Portfolio Website
 
-Personal portfolio website (Work in Progress).
+Personal portfolio website (Work in Progress)
 
 ## Status
 🚧 Under development (approx. 60-70% complete)
