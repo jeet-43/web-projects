@@ -1,86 +1,521 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>portfolio</title></head>
-<!-- typography -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jeet Makhija – Software Engineer | Problem Solver | Builder" />
+  <title>Jeet Makhija</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Devicon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<!-- cursor glow effect element -->
-<div class="cursor-glow"></div>
-<!-- main navigation -->
+
+<!-- Loader -->
+<div class="loader">
+  <div class="loader-content">
+    <div class="loader-text">&gt; Initializing UI...</div>
+    <div class="loader-percentage">0%</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll Progress Indicator -->
+<div class="scroll-progress">
+  <div class="scroll-progress-bar"></div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" aria-label="Toggle theme">
+  <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+    <path d="M12 1V3M12 21V23M23 12H21M3 12H1M20.49 3.51L19.07 4.93M4.93 19.07L3.51 20.49M20.49 20.49L19.07 19.07M4.93 4.93L3.51 3.51" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<!-- Custom Cursors -->
+<div class="custom-cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- Navigation -->
 <nav>
-  <div class="nav-wrapper">
-    <div class="portfolio-badge">PORTFOLIO</div>
-    <div class="nav-links">
-      <a href="#about">About Me</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <!-- cursor glow effect element -->
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/jeet-makhija/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"></a>
-      <a href="https://github.com/jeet-43" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"></a>
-      <a href="https://leetcode.com/u/Jeet_16/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"></a>
-    </div>
+  <div class="nav-container">
+    <div class="logo">JEET.DEV</div>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#learning">Learning</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#profiles">Profiles</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
 </nav>
-<!-- typing effect -->
+
+<!-- Hero Section -->
 <section class="hero">
-  <div style="max-width:700px">
-    <h2>I'm</h2>
-    <h1><span id="typing"></span></h1>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for Opportunities</div>
+    <h1 class="hero-title">
+      <div class="line"><span>JEET</span></div>
+      <div class="line"><span>MAKHIJA</span></div>
+    </h1>
+    <p class="hero-subtitle">
+      Software engineer who turns coffee into code, solves problems with C++ & DSA, and builds digital experiences that actually work.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
   </div>
 </section>
 
-<!-- about me section -->
-<section class="services about" id="about">
-<h1>ABOUT <span>ME</span></h1>
-<div class="skill-group" style="grid-column:1 / -1; max-width:900px;">
-  <ul style="font-size:18px; line-height:1.8; list-style:disc; padding-left:20px;">
-    <li>BCA student at JIMS Rohini with a strong interest in software development and problem-solving.</li>
-    <li>Actively learning <strong>C++, C, and Python</strong> to build efficient and scalable solutions.</li>
-    <li>Regularly practice <strong>Data Structures & Algorithms</strong> to improve logical thinking and performance.</li>
-    <li>Enjoy building <strong>responsive web interfaces</strong> and exploring creative design concepts.</li>
-    <li>Maintain active profiles on <strong>LinkedIn, GitHub, and LeetCode</strong> to showcase projects, code, and problem-solving progress.</li>
-  </ul>
-
-  <div class="social-links" style="margin-top:30px;">
-    <a href="https://www.linkedin.com/in/jeet-makhija/" target="_blank" aria-label="LinkedIn">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />
-    </a>
-    <a href="https://github.com/jeet-43" target="_blank" aria-label="GitHub">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
-    </a>
-    <a href="https://leetcode.com/u/Jeet_16/" target="_blank" aria-label="LeetCode">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" />
-    </a>
+<!-- Marquee -->
+<div class="marquee-section">
+  <div class="marquee">
+    <div class="marquee-content">
+      <div class="marquee-item">C++ <span>★</span></div>
+      <div class="marquee-item">DSA <span>★</span></div>
+      <div class="marquee-item">Web Dev <span>★</span></div>
+      <div class="marquee-item">Problem Solving <span>★</span></div>
+      <div class="marquee-item">Clean Code <span>★</span></div>
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      <div class="marquee-item">C++ <span>★</span></div>
+      <div class="marquee-item">DSA <span>★</span></div>
+      <div class="marquee-item">Web Dev <span>★</span></div>
+      <div class="marquee-item">Problem Solving <span>★</span></div>
+      <div class="marquee-item">Clean Code <span>★</span></div>
+    </div>
   </div>
 </div>
+
+<!-- About Section -->
+<section class="section" id="about">
+  <div class="section-header reveal">
+    <h2 class="section-title">
+      <span class="section-number">[01]</span>
+      About Me
+    </h2>
+    <p class="section-desc">Who I am and what I do</p>
+  </div>
+  <div class="about-content">
+    <div class="about-text reveal">
+      <p>I'm a <strong>BCA student</strong> with one clear goal: becoming a software engineer who builds things that matter.</p>
+      <p>My days revolve around <span class="highlight">C++</span> and <span class="highlight">Data Structures & Algorithms</span> — not because I have to, but because I genuinely enjoy the challenge of solving complex problems efficiently.</p>
+      <p>I believe in <strong>learning by doing</strong>. That's why you'll find me actively coding on GitHub, grinding problems on LeetCode, and constantly pushing myself to improve.</p>
+      <p>When I'm not debugging or optimizing algorithms, I'm building web applications with clean UI and smooth interactions. Every project is a chance to learn something new.</p>
+    </div>
+    <div class="code-block reveal">
+      <span class="code-line code-comment">// My approach to engineering</span>
+      <span class="code-line"><span class="code-keyword">while</span> (alive) {</span>
+      <span class="code-line">  <span class="code-function">solve</span>(<span class="code-string">"problems"</span>);</span>
+      <span class="code-line">  <span class="code-function">write</span>(<span class="code-string">"clean code"</span>);</span>
+      <span class="code-line">  <span class="code-function">build</span>(<span class="code-string">"cool stuff"</span>);</span>
+      <span class="code-line">  <span class="code-function">learn</span>(<span class="code-string">"constantly"</span>);</span>
+      <span class="code-line">  <span class="code-function">repeat</span>();</span>
+      <span class="code-line">}</span>
+      <span class="code-line code-comment">// That's the loop.</span>
+    </div>
+  </div>
 </section>
 
-<div style="height:80px;background:#fff"></div>
-<!-- skills section -->
+<!-- Skills Section -->
+<section class="section" id="skills">
+  <div class="section-header reveal">
+    <h2 class="section-title">
+      <span class="section-number">[02]</span>
+      Tech Stack
+    </h2>
+    <p class="section-desc">Tools and technologies I work with</p>
+  </div>
+  <div class="skills-container">
+    <div class="skills-category reveal">
+      <div class="category-label">Programming Languages</div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">C++</div>
+            <i class="devicon-cplusplus-plain skill-icon"></i>
+          </div>
+          <div class="skill-level">ADVANCED — Primary language for DSA</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">Python</div>
+            <i class="devicon-python-plain skill-icon"></i>
+          </div>
+          <div class="skill-level">INTERMEDIATE — Scripting & automation</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">JavaScript</div>
+            <i class="devicon-javascript-plain skill-icon"></i>
+          </div>
+          <div class="skill-level">INTERMEDIATE — Web development</div>
+        </div>
+      </div>
+    </div>
 
-<section class="services" id="skills">
-<h1>MY <span>SKILLS</span></h1>
-<div class="skill-group"><h3>Programming & DSA</h3><div class="tags"><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">C++</div><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg">C</div><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">Python</div><div class="tag">Data Structures & Algorithms</div></div></div>
-<div class="skill-group"><h3>Web Development</h3><div class="tags"><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">HTML</div><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">CSS</div><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">JavaScript</div><div class="tag">Responsive Design</div></div></div>
-<div class="skill-group"><h3>Tools & Libraries</h3><div class="tags"><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">Git</div><div class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">GitHub</div><div class="tag">SQL</div><div class="tag">NumPy</div><div class="tag">Pandas</div><div class="tag">Matplotlib</div></div></div>
+    <div class="skills-category reveal">
+      <div class="category-label">Core Competencies</div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">Data Structures</div>
+            <span class="skill-icon">🔗</span>
+          </div>
+          <div class="skill-level">Arrays, LinkedLists, Trees, Graphs</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">Algorithms</div>
+            <span class="skill-icon">⚡</span>
+          </div>
+          <div class="skill-level">Sorting, Searching, DP, Greedy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-category reveal">
+      <div class="category-label">Web Technologies</div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">HTML & CSS</div>
+            <i class="devicon-html5-plain skill-icon"></i>
+          </div>
+          <div class="skill-level">Responsive design, modern layouts</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <div class="skill-name">Git & GitHub</div>
+            <i class="devicon-git-plain skill-icon"></i>
+          </div>
+          <div class="skill-level">Version control, collaboration</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div style="height:80px;background:#fff"></div>
+<!-- Currently Learning Section -->
+<section class="section" id="learning">
+  <div class="section-header reveal">
+    <h2 class="section-title">
+      <span class="section-number">[03]</span>
+      Currently Learning
+    </h2>
+    <p class="section-desc">Always growing, always evolving</p>
+  </div>
+  <div class="skills-container">
+    <div class="learning-grid">
+      <div class="learning-card reveal">
+        <div class="learning-header">
+          <div class="learning-icon">🚀</div>
+          <div class="learning-status">In Progress</div>
+        </div>
+        <h3 class="learning-title">Advanced DSA</h3>
+        <p class="learning-description">
+          Diving deeper into advanced data structures and algorithms - Dynamic Programming, Graph Algorithms, and System Design patterns.
+        </p>
+        <div class="learning-progress-container">
+          <div class="learning-progress-bar">
+            <div class="learning-progress-fill" style="width: 35%"></div>
+          </div>
+          <span class="learning-percentage">35%</span>
+        </div>
+      </div>
 
-<section class="services contact" id="contact">
-<h1>CONTACT <span>ME</span></h1>
-<div class="skill-group" style="grid-column:1 / -1; max-width:900px;">
-  <p style="font-size:20px; line-height:1.8;">Feel free to reach out for collaboration, projects, or opportunities. You can contact me directly at:</p>
-  <p style="font-size:22px; font-weight:600; margin-top:10px;">📧 jeetmakhija2@gmail.com</p>
-</div>
+      <div class="learning-card reveal">
+        <div class="learning-header">
+          <div class="learning-icon">⚡</div>
+          <div class="learning-status">In Progress</div>
+        </div>
+        <h3 class="learning-title">Full Stack Development</h3>
+        <p class="learning-description">
+          Expanding my web development skills with React, Node.js, and modern backend technologies to build complete applications.
+        </p>
+        <div class="learning-progress-container">
+          <div class="learning-progress-bar">
+            <div class="learning-progress-fill" style="width: 40%"></div>
+          </div>
+          <span class="learning-percentage">40%</span>
+        </div>
+      </div>
+
+      <div class="learning-card reveal">
+        <div class="learning-header">
+          <div class="learning-icon">🎯</div>
+          <div class="learning-status">Next Up</div>
+        </div>
+        <h3 class="learning-title">System Design</h3>
+        <p class="learning-description">
+          Planning to explore scalable system architecture, microservices, and cloud technologies to understand how large-scale applications work.
+        </p>
+        <div class="learning-progress-container">
+          <div class="learning-progress-bar">
+            <div class="learning-progress-fill" style="width: 0%"></div>
+          </div>
+          <span class="learning-percentage">0%</span>
+        </div>
+      </div>
+
+      <div class="learning-card reveal">
+        <div class="learning-header">
+          <div class="learning-icon">🔥</div>
+          <div class="learning-status">Exploring</div>
+        </div>
+        <h3 class="learning-title">Competitive Programming</h3>
+        <p class="learning-description">
+          Actively participating in coding contests, learning advanced problem-solving techniques, and improving speed and accuracy.
+        </p>
+        <div class="learning-progress-container">
+          <div class="learning-progress-bar">
+            <div class="learning-progress-fill" style="width: 10%"></div>
+          </div>
+          <span class="learning-percentage">10%</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer class="footer"><p>© 2026 Jeet Makhija. All rights reserved.</p></footer>
+<!-- Projects Section -->
+<section class="section" id="projects">
+  <div class="section-header reveal">
+    <h2 class="section-title">
+      <span class="section-number">[04]</span>
+      Featured Work
+    </h2>
+    <p class="section-desc">Projects I've built and problems I've solved</p>
+  </div>
+  <div class="projects-container">
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-info">
+          <div class="project-type">Web Development</div>
+          <h3>Personal Portfolio</h3>
+        </div>
+        <div class="project-number">01</div>
+      </div>
+      <div class="project-body">
+        <div>
+          <p class="project-description">
+            A modern, responsive portfolio website featuring custom animations, interactive elements, and clean design. Built from scratch with vanilla JavaScript and CSS, focusing on performance and user experience.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Animations</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/jeet-43" class="project-link" target="_blank">
+            <span>View on GitHub</span>
+            <span>→</span>
+          </a>
+          <a href="https://jeet-dev.netlify.app/" class="project-link">
+            <span>Live Demo</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-info">
+          <div class="project-type">Coming Soon</div>
+          <h3>More Projects Loading...</h3>
+        </div>
+        <div class="project-number">02</div>
+      </div>
+      <div class="project-body">
+        <div>
+          <p class="project-description">
+            Currently working on new projects involving full-stack development and advanced DSA implementations. Check back soon or visit my GitHub for the latest updates.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">In Progress</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/jeet-43" class="project-link" target="_blank">
+            <span>Follow Progress</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Profiles Section -->
+<section class="section" id="profiles">
+  <div class="section-header reveal">
+    <h2 class="section-title">
+      <span class="section-number">[05]</span>
+      My Profiles
+    </h2>
+    <p class="section-desc">Connect with me across platforms</p>
+  </div>
+  <div class="projects-container">
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-info">
+          <div class="project-type">Code Repository</div>
+          <h3>GitHub</h3>
+        </div>
+        <div class="project-number"><i class="devicon-github-original"></i></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <p class="project-description">
+            Check out my repositories, coding projects, and development journey. I actively maintain and share my work, from DSA implementations to web development projects.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Projects</span>
+            <span class="tech-tag">Code</span>
+            <span class="tech-tag">Development</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/jeet-43" class="project-link" target="_blank">
+            <span>Visit Profile</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-info">
+          <div class="project-type">Professional Network</div>
+          <h3>LinkedIn</h3>
+        </div>
+        <div class="project-number"><i class="devicon-linkedin-plain"></i></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <p class="project-description">
+            Let's connect professionally! Follow my journey in software development, see my latest achievements, and explore opportunities for collaboration and networking.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Networking</span>
+            <span class="tech-tag">Career</span>
+            <span class="tech-tag">Professional</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://www.linkedin.com/in/jeet-makhija/" class="project-link" target="_blank">
+            <span>Visit Profile</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-info">
+          <div class="project-type">Problem Solving</div>
+          <h3>LeetCode</h3>
+        </div>
+        <div class="project-number"><i class="devicon-leetcode-plain"></i></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <p class="project-description">
+            Track my problem-solving journey and competitive programming progress. I regularly practice DSA problems, participate in contests, and continuously improve my algorithmic thinking.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Algorithms</span>
+            <span class="tech-tag">Data Structures</span>
+            <span class="tech-tag">Contests</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://leetcode.com/u/Jeet_16/" class="project-link" target="_blank">
+            <span>Visit Profile</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+  <div class="section-header reveal">
+    <h2 class="section-title">
+      <span class="section-number">[06]</span>
+      Let's Connect
+    </h2>
+  </div>
+  <div class="contact-content">
+    <h3 class="contact-title reveal">Got a project in mind?<br>Let's make it happen.</h3>
+    <p class="contact-subtitle reveal">
+      I'm always interested in hearing about new opportunities, collaborations, or just chatting about tech. Feel free to reach out through any of these channels.
+    </p>
+    
+    <div class="contact-methods reveal">
+      <a href="mailto:jeetmakhija2@gmail.com" class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">jeetmakhija2@gmail.com</div>
+      </a>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-label">Location</div>
+        <div class="contact-value">Delhi, India</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div class="contact-label">Status</div>
+        <div class="contact-value">Open to Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-left">
+      © 2026 Jeet Makhija — Built from scratch with code and caffeine
+    </div>
+    <div class="footer-right">
+      Version 1.0
+    </div>
+  </div>
+</footer>
+
+<!-- Custom Scripts -->
 <script src="script.js"></script>
+
 </body>
 </html>
