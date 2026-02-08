@@ -67,8 +67,8 @@ I used online resources, YouTube tutorials (especially **Sheriyans Coding School
 
 ## 🔹 Feedback
 
-Feedback and suggestions are always welcome.  
-This project represents a learning milestone, not a final product.
+Feedback and suggestions are always welcome
+This project represents a learning milestone, not a final product
 
 ---
 
