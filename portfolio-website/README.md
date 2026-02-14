@@ -20,11 +20,10 @@ I used online resources, YouTube tutorials (especially **Sheriyans Coding School
 ## 🔹 Features
 
 - Responsive design (desktop & mobile friendly)
-- Custom loading screen
 - Scroll progress indicator
-- Light / Dark theme toggle
 - Smooth animations and micro-interactions
-- Custom cursor (desktop only)
+- Resume section
+- Journey section
 - Project showcase section
 - Contact & social links
 
