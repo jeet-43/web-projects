@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jeet Makhija — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161e;
+    --border: #1e2330;
+    --accent: #5fffb8;
+    --accent2: #4dc8ff;
+    --accent3: #ff6b6b;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --label: #9ca3af;
+  }
+
+  @media print {
+    body { background: white !important; color: #111 !important; }
+    .page { box-shadow: none !important; }
+    .sidebar { background: #f5f5f5 !important; }
+    :root {
+      --bg: white; --surface: #f5f5f5; --border: #ddd;
+      --accent: #00a86b; --accent2: #0080cc; --accent3: #cc3333;
+      --text: #111; --muted: #666; --label: #444;
+    }
+  }
+
+  html { font-size: 13px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    grid-column: 1 / -1;
+    background: var(--bg);
+    padding: 2.4rem 2rem 2rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(95,255,184,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: 80px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(77,200,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .name-block { flex: 1; }
+
+  .name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .name span {
+    color: var(--accent);
+  }
+
+  .tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--label);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover { color: var(--accent); }
+
+  .contact-item .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+    padding: 1.6rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+
+  /* Skills */
+  .skill-item {
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-name {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+
+  .skill-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--muted);
+  }
+
+  .skill-bar {
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  /* Tags */
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--label);
+    line-height: 1.4;
+  }
+
+  /* Links */
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    text-decoration: none;
+  }
+
+  .link-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--accent);
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .link-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--label);
+  }
+
+  .link-item:hover .link-text { color: var(--accent); }
+
+  /* Milestone mini-list */
+  .milestone-item {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .milestone-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--accent2);
+    white-space: nowrap;
+    padding-top: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .milestone-text {
+    font-size: 0.65rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── MAIN ─── */
+  .main {
+    padding: 1.6rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  /* Objective */
+  .objective {
+    font-size: 0.78rem;
+    color: var(--label);
+    line-height: 1.75;
+    padding-left: 0.8rem;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* Section heading */
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Entry */
+  .entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.1rem 1rem;
+  }
+
+  .entry-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--text);
+  }
+
+  .entry-subtitle {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+
+  .entry-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--accent2);
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 0.1rem;
+  }
+
+  .entry-location {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--muted);
+    text-align: right;
+    grid-column: 2;
+  }
+
+  .entry-bullets {
+    grid-column: 1 / -1;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .bullet {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .bullet::before {
+    content: '›';
+    color: var(--accent);
+    font-size: 0.85rem;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  .bullet-text {
+    font-size: 0.72rem;
+    color: var(--label);
+    line-height: 1.6;
+  }
+
+  .bullet-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Stack badges on project */
+  .stack {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-top: 0.3rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    padding: 0.15rem 0.45rem;
+    background: rgba(95,255,184,0.07);
+    border: 1px solid rgba(95,255,184,0.2);
+    color: var(--accent);
+    border-radius: 2px;
+  }
+
+  .badge.blue {
+    background: rgba(77,200,255,0.07);
+    border-color: rgba(77,200,255,0.2);
+    color: var(--accent2);
+  }
+
+  /* Divider between entries */
+  .entry + .entry {
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Skills grid in main */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1.5rem;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--label);
+  }
+
+  .skill-row::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+    transform: rotate(45deg);
+  }
+
+  /* Goal callout */
+  .goal-box {
+    background: rgba(95,255,184,0.04);
+    border: 1px solid rgba(95,255,184,0.15);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+  }
+
+  .goal-icon {
+    color: var(--accent);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-shrink: 0;
+  }
+
+  .goal-text {
+    font-size: 0.72rem;
+    color: var(--label);
+    line-height: 1.65;
+  }
+
+  .goal-text strong { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <div class="name-block">
+      <div class="name">JEET <span>MAKHIJA</span></div>
+      <div class="tagline">Software Engineering Aspirant &nbsp;·&nbsp; BCA Student &nbsp;·&nbsp; Delhi, India</div>
+    </div>
+    <div class="contact-row">
+      <a class="contact-item" href="mailto:jeetmakhija2@gmail.com">
+        <span class="dot"></span>jeetmakhija2@gmail.com
+      </a>
+      <a class="contact-item" href="https://github.com/jeet-43" target="_blank">
+        <span class="dot"></span>github.com/jeet-43
+      </a>
+      <a class="contact-item" href="https://linkedin.com/in/jeet-makhija" target="_blank">
+        <span class="dot"></span>linkedin.com/in/jeet-makhija
+      </a>
+      <a class="contact-item" href="https://jeet-dev.netlify.app" target="_blank">
+        <span class="dot"></span>jeet-dev.netlify.app
+      </a>
+    </div>
+  </header>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <!-- Skills -->
+    <div>
+      <div class="section-label">Languages</div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">C++</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">Python</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width:62%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">JavaScript</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">HTML & CSS</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">MySQL</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+      </div>
+    </div>
+
+    <!-- DSA Topics -->
+    <div>
+      <div class="section-label">DSA Topics</div>
+      <div class="tag-cloud">
+        <span class="tag">Arrays</span>
+        <span class="tag">Strings</span>
+        <span class="tag">Linked Lists</span>
+        <span class="tag">Trees</span>
+        <span class="tag">Recursion</span>
+        <span class="tag">Sorting</span>
+        <span class="tag">Searching</span>
+        <span class="tag">Graphs</span>
+        <span class="tag">DP ↗</span>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div>
+      <div class="section-label">Tools & Platforms</div>
+      <div class="tag-cloud">
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">Netlify</span>
+        <span class="tag">LeetCode</span>
+        <span class="tag">DevTools</span>
+      </div>
+    </div>
+
+    <!-- Profiles -->
+    <div>
+      <div class="section-label">Online Profiles</div>
+      <a class="link-item" href="https://leetcode.com/u/Jeet_16" target="_blank">
+        <span class="link-icon">LC</span>
+        <span class="link-text">Jeet_16 (active Jan '26)</span>
+      </a>
+      <a class="link-item" href="https://github.com/jeet-43" target="_blank">
+        <span class="link-icon">GH</span>
+        <span class="link-text">github.com/jeet-43</span>
+      </a>
+      <a class="link-item" href="https://linkedin.com/in/jeet-makhija" target="_blank">
+        <span class="link-icon">LI</span>
+        <span class="link-text">jeet-makhija</span>
+      </a>
+    </div>
+
+    <!-- Timeline -->
+    <div>
+      <div class="section-label">Timeline</div>
+      <div class="milestone-item">
+        <span class="milestone-year">2023</span>
+        <span class="milestone-text">Wrote first line of Python code</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-year">2023–25</span>
+        <span class="milestone-text">Self-studied HTML, CSS, Python, MySQL</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-year">Jan '26</span>
+        <span class="milestone-text">Joined LeetCode — daily DSA grind</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-year">Jan '26</span>
+        <span class="milestone-text">Built &amp; shipped portfolio site</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-year">2026 ↗</span>
+        <span class="milestone-text">Target: SWE internship + full-stack + system design</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- Objective -->
+    <p class="objective">
+      BCA student and self-driven developer with hands-on experience in <strong style="color:#e8eaf0;font-weight:500">C++, Python, and web technologies</strong>. Started daily DSA practice on LeetCode in January 2026 and actively shipping projects. Seeking a <strong style="color:#5fffb8;font-weight:500">Software Engineering internship</strong> to contribute meaningfully and grow toward a full-time SWE role at a company building things that matter.
+    </p>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">Education</div>
+
+      <div class="entry">
+        <div>
+          <div class="entry-title">Bachelor of Computer Applications (BCA)</div>
+          <div class="entry-subtitle">JIMS (Jagannath International Management School) · Sec 3, Rohini, Delhi</div>
+        </div>
+        <div>
+          <div class="entry-date">2025 – Present</div>
+          <div class="entry-location">Delhi, India</div>
+        </div>
+        <div class="entry-bullets">
+          <div class="bullet">
+            <span class="bullet-text">Core coursework: <strong>Data Structures, Algorithms, DBMS, Software Engineering</strong></span>
+          </div>
+          <div class="bullet">
+            <span class="bullet-text">Actively applying classroom concepts through independent projects and daily DSA practice on LeetCode</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div>
+          <div class="entry-title">Class 12th — Commerce Stream</div>
+          <div class="entry-subtitle">Happy Home Public School (CBSE) · Delhi</div>
+        </div>
+        <div>
+          <div class="entry-date">Completed 2025</div>
+        </div>
+        <div class="entry-bullets">
+          <div class="bullet">
+            <span class="bullet-text">Self-studied programming in parallel — <strong>Python, HTML, CSS, MySQL</strong> — well before formal CS education began</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="entry">
+        <div>
+          <div class="entry-title">Personal Portfolio Website</div>
+        </div>
+        <div class="entry-date">Jan 2026</div>
+        <div class="stack">
+          <span class="badge">HTML</span>
+          <span class="badge">CSS</span>
+          <span class="badge">Vanilla JS</span>
+          <span class="badge blue">Netlify</span>
+        </div>
+        <div class="entry-bullets">
+          <div class="bullet">
+            <span class="bullet-text">Built a <strong>fully responsive portfolio from scratch</strong> — no frameworks, no templates — featuring a custom animated cursor, scroll-reveal animations, parallax hero section, dark/light mode toggle, and glassmorphism UI</span>
+          </div>
+          <div class="bullet">
+            <span class="bullet-text">Live at <strong>jeet-dev.netlify.app</strong> — primary showcase for recruiters and hiring managers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div>
+          <div class="entry-title">DSA Problem Solutions Repository</div>
+        </div>
+        <div class="entry-date">Jan 2026 – Present</div>
+        <div class="stack">
+          <span class="badge">C++</span>
+          <span class="badge blue">LeetCode</span>
+          <span class="badge blue">GitHub</span>
+        </div>
+        <div class="entry-bullets">
+          <div class="bullet">
+            <span class="bullet-text">Maintaining a <strong>structured GitHub repository</strong> of solved DSA problems with clean, well-commented C++ code — organized by topic for easy reference</span>
+          </div>
+          <div class="bullet">
+            <span class="bullet-text">Topics covered: <strong>Arrays, Strings, Linked Lists, Trees, Recursion, Sorting &amp; Searching</strong>; currently exploring Dynamic Programming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Summary -->
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-row">C++ — Advanced (primary language)</div>
+        <div class="skill-row">Python, JavaScript — Intermediate</div>
+        <div class="skill-row">HTML, CSS — Responsive design &amp; animations</div>
+        <div class="skill-row">MySQL — Relational databases</div>
+        <div class="skill-row">Git &amp; GitHub — Version control</div>
+        <div class="skill-row">Vanilla JS — DOM manipulation</div>
+      </div>
+    </div>
+
+    <!-- Goal -->
+    <div class="goal-box">
+      <span class="goal-icon">◈</span>
+      <p class="goal-text">
+        <strong>2026 Goal:</strong> Deep-dive into DSA, Full-Stack development, and System Design. Crack an SWE internship and work toward a full-time role 
