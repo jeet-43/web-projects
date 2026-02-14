@@ -6,33 +6,6 @@ Description: Interactive features and animations
 ==================================================
 */
 
-// ==================== LOADING ANIMATION ====================
-
-let loadProgress = 0;
-const loaderBar = document.querySelector('.loader-bar-fill');
-const loaderPercentage = document.querySelector('.loader-percentage');
-
-const loadInterval = setInterval(() => {
-  loadProgress += Math.random() * 15;
-  if (loadProgress >= 100) {
-    loadProgress = 100;
-    clearInterval(loadInterval);
-  }
-  loaderBar.style.width = loadProgress + '%';
-  loaderPercentage.textContent = Math.floor(loadProgress) + '%';
-}, 100);
-
-// Hide loader when page is fully loaded
-window.addEventListener('load', () => {
-  loadProgress = 100;
-  loaderBar.style.width = '100%';
-  loaderPercentage.textContent = '100%';
-  
-  setTimeout(() => {
-    document.querySelector('.loader').classList.add('hidden');
-  }, 500);
-});
-
 // ==================== SCROLL PROGRESS INDICATOR ====================
 
 const scrollProgressBar = document.querySelector('.scroll-progress-bar');
@@ -66,23 +39,6 @@ backToTopBtn.addEventListener('click', () => {
     top: 0,
     behavior: 'smooth'
   });
-});
-
-// ==================== THEME TOGGLE ====================
-
-const themeToggle = document.querySelector('.theme-toggle');
-
-// Check for saved theme preference or default to dark
-const currentTheme = localStorage.getItem('theme') || 'dark';
-if (currentTheme === 'light') {
-  document.body.classList.add('light-mode');
-}
-
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  
-  const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
-  localStorage.setItem('theme', theme);
 });
 
 // ==================== PARALLAX EFFECTS ====================
@@ -119,59 +75,6 @@ function requestParallax() {
 }
 
 window.addEventListener('scroll', requestParallax);
-
-// ==================== CUSTOM CURSOR ====================
-
-const cursor = document.querySelector('.custom-cursor');
-const follower = document.querySelector('.cursor-follower');
-
-let mouseX = 0, mouseY = 0;
-let cursorX = 0, cursorY = 0;
-let followerX = 0, followerY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-function animateCursor() {
-  const dx = mouseX - cursorX;
-  const dy = mouseY - cursorY;
-  
-  cursorX += dx * 0.3;
-  cursorY += dy * 0.3;
-  
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top = cursorY + 'px';
-  
-  const fdx = mouseX - followerX;
-  const fdy = mouseY - followerY;
-  
-  followerX += fdx * 0.1;
-  followerY += fdy * 0.1;
-  
-  follower.style.left = followerX + 'px';
-  follower.style.top = followerY + 'px';
-  
-  requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
-// ==================== CURSOR HOVER EFFECTS ====================
-
-const links = document.querySelectorAll('a, button, .skill-item, .project-card, .contact-item');
-
-links.forEach(link => {
-  link.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'scale(1.5)';
-    follower.style.transform = 'scale(1.3)';
-  });
-  link.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'scale(1)';
-    follower.style.transform = 'scale(1)';
-  });
-});
 
 // ==================== SCROLL REVEAL ANIMATIONS ====================
 
@@ -219,8 +122,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ==================== CONSOLE MESSAGE ====================
+// ==================== FLOATING PARTICLES ====================
 
-console.log('%c> Hey there! 👋', 'color: #00ff88; font-size: 20px; font-weight: bold;');
-console.log('%cLooks like you\'re curious about the code. I like that.', 'color: #888; font-size: 14px;');
-console.log('%cLet\'s connect: jeetmakhija2@gmail.com', 'color: #00ff88; font-size: 14px;');
+function createParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+
+  const count = 28;
+  const colors = ['rgba(88,166,255,0.5)', 'rgba(147,197,253,0.4)', 'rgba(240,246,255,0.3)', 'rgba(31,111,235,0.5)'];
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+
+    const size = Math.random() * 3 + 1;
+    const x = Math.random() * 100;
+    const duration = Math.random() * 20 + 15;
+    const delay = Math.random() * 20;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    // Occasionally make a small plus/cross instead of a dot
+    if (Math.random() > 0.7) {
+      p.style.cssText = `
+        left: ${x}%;
+        width: ${size + 1}px;
+        height: ${size + 1}px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: 0 ${size}px 0 ${color}, 0 -${size}px 0 ${color}, ${size}px 0 0 ${color}, -${size}px 0 0 ${color};
+        animation-duration: ${duration}s;
+        animation-delay: -${delay}s;
+      `;
+    } else {
+      p.style.cssText = `
+        left: ${x}%;
+        width: ${size}px;
+        height: ${size}px;
+        background: ${color};
+        box-shadow: 0 0 ${size * 3}px ${color};
+        animation-duration: ${duration}s;
+        animation-delay: -${delay}s;
+      `;
+    }
+
+    container.appendChild(p);
+  }
+}
+
+createParticles();
