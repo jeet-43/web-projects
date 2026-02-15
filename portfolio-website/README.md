@@ -10,7 +10,7 @@
 
 **A modern, high-performance developer portfolio built from scratch with vanilla HTML, CSS & JavaScript — no frameworks, no dependencies, just clean code.**
 
-[🌐 Live Demo](https://jeet-dev.netlify.app/) &nbsp;·&nbsp; [📁 GitHub](https://github.com/jeet-43) &nbsp;·&nbsp; [💼 LinkedIn](https://www.linkedin.com/in/jeet-makhija/) &nbsp;·&nbsp; [🧩 LeetCode](https://leetcode.com/u/Jeet_16/)
+[🌐 Live Demo](https://jeet-dev.netlify.app/) &nbsp;·&nbsp; [📁 GitHub](https://github.com/jeet-43) &nbsp;·&nbsp; [💼 LinkedIn](https://www.linkedin.com/in/jeet-makhija/) &nbsp;·&nbsp; 
 
 </div>
 
