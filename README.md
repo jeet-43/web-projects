@@ -1,35 +1,140 @@
-# Web Development Projects
+<div align="center">
 
-This repository contains my web development projects built while learning and practicing frontend development.
+# 🌐 Web Projects
 
-The goal of this repository is to improve my understanding of HTML, CSS, JavaScript, and to build real-world projects for hands-on experience.
+**A collection of frontend projects built while learning and applying real-world web development.**
+
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://github.com/jeet-43/web-projects)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://github.com/jeet-43/web-projects)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://github.com/jeet-43/web-projects)
+[![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://jeet-dev.netlify.app/)
+
+![Repo Size](https://img.shields.io/github/repo-size/jeet-43/web-projects?color=58a6ff&style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/jeet-43/web-projects?color=58a6ff&style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/jeet-43/web-projects?color=58a6ff&style=for-the-badge)
+
+> *Built from scratch. No frameworks. Just clean HTML, CSS, and JavaScript.*
+
+</div>
+
+---
+
+## 📌 About This Repository
+
+This repository contains all of my frontend web development projects — built hands-on while learning core web technologies. Every project here represents a real concept practiced and shipped, from layout and responsiveness to animations and interactivity.
+
+The goal is simple: **learn by building**, maintain clean code, and keep shipping.
+
+---
+
+## 🗂️ Projects
+
+| # | Project | Description | Tech | Live |
+|---|---------|-------------|------|------|
+| 01 | [**Portfolio Website**](https://github.com/jeet-43/web-projects/tree/main/portfolio-website) | Personal developer portfolio with custom cursor, scroll animations, glassmorphism cards, and a full journey timeline | HTML · CSS · JS | [🔗 Live](https://jeet-dev.netlify.app/) |
+
+> 📁 More projects are being added regularly as I build and learn.
 
 ---
 
 ## 🛠️ Tech Stack
-- HTML
-- CSS
-- JavaScript
-- Git & GitHub
 
+### Core Technologies
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
----
-
-## 🎯 Purpose of This Repository
-- Practice frontend development
-- Improve problem-solving skills
-- Build projects for internship preparation
-- Maintain clean and organized code
+### Tools
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
 ---
 
-## 🚀 Future Plans
-- Add advanced JavaScript projects
-- Learn React
-- Improve UI/UX
-- Deploy projects live
+## 🎯 Purpose
+
+- 🔨 Practice frontend development concepts hands-on
+- 🧠 Strengthen problem-solving and UI/UX thinking
+- 🗂️ Build a structured portfolio of real shipped projects
+- 🚀 Prepare for software engineering internships
 
 ---
 
-## 📌 Note
-This repository is regularly updated as I learn and build new projects.
+## 🗺️ Roadmap
+
+```
+Web Projects Roadmap
+│
+├── ✅  Portfolio Website          — Shipped & Live
+├── 🔄  JavaScript mini-projects  — In Progress
+├── ⏳  CSS animations & effects   — Planned
+├── ⏳  API-integrated projects     — Planned
+├── ⏳  React projects              — Planned
+└── ⏳  Full Stack (Node + DB)      — Future
+```
+
+| Milestone | Status |
+|-----------|--------|
+| Build & deploy personal portfolio | ✅ Done |
+| Add vanilla JS interactive projects | 🔄 In Progress |
+| Explore CSS animation deep-dives | ⏳ Planned |
+| Build API-integrated apps | ⏳ Planned |
+| Learn and apply React | ⏳ Planned |
+| Full stack projects (Node + DB) | ⏳ Future |
+
+---
+
+## 📁 Repository Structure
+
+```
+web-projects/
+│
+├── portfolio-website/      # Personal portfolio — HTML, CSS, JS
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── resume.html
+│
+└── ...                     # More projects coming soon
+```
+
+---
+
+## 🚀 Running Locally
+
+All projects are static — no build step needed.
+
+```bash
+# Clone the repository
+git clone https://github.com/jeet-43/web-projects.git
+
+# Navigate to a project
+cd web-projects/portfolio-website
+
+# Open in browser
+open index.html
+# or just drag index.html into your browser
+```
+
+---
+
+## 📫 Connect
+
+<div align="center">
+
+[![Portfolio](https://img.shields.io/badge/🌐%20Portfolio-jeet--dev.netlify.app-58a6ff?style=for-the-badge)](https://jeet-dev.netlify.app/)
+[![LinkedIn](https://img.shields.io/badge/💼%20LinkedIn-jeet--makhija-0A66C2?style=for-the-badge)](https://www.linkedin.com/in/jeet-makhija/)
+[![GitHub](https://img.shields.io/badge/🐙%20GitHub-jeet--43-181717?style=for-the-badge)](https://github.com/jeet-43)
+
+</div>
+
+---
+
+<div align="center">
+
+⭐ **Star this repo if you find it useful or inspiring!**
+
+*Regularly updated as I learn and build new projects.*
+
+</div>
