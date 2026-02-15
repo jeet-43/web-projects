@@ -9,9 +9,6 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://github.com/jeet-43/web-projects)
 [![Netlify](https://img.shields.io/badge/Deployed-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://jeet-dev.netlify.app/)
 
-![Repo Size](https://img.shields.io/github/repo-size/jeet-43/web-projects?color=58a6ff&style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/jeet-43/web-projects?color=58a6ff&style=for-the-badge)
-![Stars](https://img.shields.io/github/stars/jeet-43/web-projects?color=58a6ff&style=for-the-badge)
 
 > *Built from scratch. No frameworks. Just clean HTML, CSS, and JavaScript.*
 
@@ -61,29 +58,6 @@ The goal is simple: **learn by building**, maintain clean code, and keep shippin
 
 ---
 
-## 🗺️ Roadmap
-
-```
-Web Projects Roadmap
-│
-├── ✅  Portfolio Website          — Shipped & Live
-├── 🔄  JavaScript mini-projects  — In Progress
-├── ⏳  CSS animations & effects   — Planned
-├── ⏳  API-integrated projects     — Planned
-├── ⏳  React projects              — Planned
-└── ⏳  Full Stack (Node + DB)      — Future
-```
-
-| Milestone | Status |
-|-----------|--------|
-| Build & deploy personal portfolio | ✅ Done |
-| Add vanilla JS interactive projects | 🔄 In Progress |
-| Explore CSS animation deep-dives | ⏳ Planned |
-| Build API-integrated apps | ⏳ Planned |
-| Learn and apply React | ⏳ Planned |
-| Full stack projects (Node + DB) | ⏳ Future |
-
----
 
 ## 📁 Repository Structure
 
@@ -101,23 +75,6 @@ web-projects/
 
 ---
 
-## 🚀 Running Locally
-
-All projects are static — no build step needed.
-
-```bash
-# Clone the repository
-git clone https://github.com/jeet-43/web-projects.git
-
-# Navigate to a project
-cd web-projects/portfolio-website
-
-# Open in browser
-open index.html
-# or just drag index.html into your browser
-```
-
----
 
 ## 📫 Connect
 
