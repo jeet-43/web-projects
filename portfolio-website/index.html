@@ -2,37 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jeet Makhija – Software Engineer | Problem Solver | Builder" />
-  <title>Jeet.dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Jeet Makhija – Software Engineer | Problem Solver | Builder specializing in C++, DSA, and Web Development" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Jeet Makhija" />
+  <meta name="keywords" content="Jeet Makhija, Software Engineer, C++, DSA, Web Developer, BCA, Portfolio, Delhi, LeetCode, Coding Blocks" />
+  <link rel="canonical" href="https://jeet-dev.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeet-dev.netlify.app/" />
+  <meta property="og:title" content="Jeet Makhija" />
+  <meta property="og:description" content="BCA student & aspiring software engineer from Delhi. Specialising in C++, DSA, and Web Development. Check out my projects and journey." />
+  <meta property="og:site_name" content="Jeet Makhija Portfolio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Jeet Makhija" />
+  <meta name="twitter:description" content="BCA student & aspiring software engineer from Delhi. Specialising in C++, DSA, and Web Development." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jeet Makhija",
+    "url": "https://jeet-dev.netlify.app/",
+    "sameAs": [
+      "https://github.com/jeet-43",
+      "https://www.linkedin.com/in/jeet-makhija/",
+      "https://leetcode.com/u/Jeet_16/"
+    ],
+    "jobTitle": "Software Engineering Student",
+    "description": "BCA student specialising in C++, DSA and Web Development",
+    "address": { "@type": "PostalAddress", "addressLocality": "Delhi", "addressCountry": "IN" }
+  }
+  </script>
+  <title>Jeet Makhija</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><polyline points='10,10 4,16 10,22' fill='none' stroke='%2358a6ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><polyline points='22,10 28,16 22,22' fill='none' stroke='%2358a6ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><line x1='19' y1='8' x2='13' y2='24' stroke='%2358a6ff' stroke-width='2.5' stroke-linecap='round'/></svg>">
+
+  <!-- Preconnect to external resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap&font-display=swap" rel="stylesheet">
   
   <!-- Devicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Scroll Progress Indicator -->
-<div class="scroll-progress">
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="scroll-progress" role="progressbar" aria-label="Page scroll progress">
   <div class="scroll-progress-bar"></div>
 </div>
 
 <!-- Back to Top Button -->
 <button class="back-to-top" aria-label="Back to top">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Progress ring SVG -->
+  <svg class="progress-ring" width="50" height="50" viewBox="0 0 50 50" aria-hidden="true">
+    <circle class="progress-ring-track" cx="25" cy="25" r="20" fill="none" stroke="rgba(88,166,255,0.15)" stroke-width="2"/>
+    <circle class="progress-ring-fill" cx="25" cy="25" r="20" fill="none" stroke="#58a6ff" stroke-width="2"
+      stroke-linecap="round"
+      stroke-dasharray="125.66"
+      stroke-dashoffset="125.66"
+      transform="rotate(-90 25 25)"/>
+  </svg>
+  <!-- Arrow icon -->
+  <svg class="back-to-top-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </button>
 
 <!-- Navigation -->
-<nav>
+<nav role="navigation">
   <div class="nav-container">
-    <div class="logo">JEET.DEV</div>
+    <a href="#hero" class="logo" aria-label="Jeet.dev home">JEET.DEV</a>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-menu">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -40,16 +103,17 @@
       <li><a href="#journey">Journey</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#profiles">Profiles</a></li>
-      <li><a href="resume.html" target="_blank">Resume</a></li>
+      <li><a href="resume.html" target="_blank" rel="noopener">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
+<main id="main-content">
 <!-- Hero Section -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="particles" id="particles"></div>
+<section class="hero" id="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-badge">Available for Opportunities</div>
     <h1 class="hero-title">
@@ -61,14 +125,16 @@
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="resume.html" target="_blank" class="btn">View Resume</a>
+      <a href="resume.html" target="_blank" rel="noopener" class="btn">View Resume</a>
       <a href="#contact" class="btn">Get in Touch</a>
     </div>
+    
+
   </div>
 </section>
 
 <!-- Marquee -->
-<div class="marquee-section">
+<div class="marquee-section" aria-hidden="true">
   <div class="marquee">
     <div class="marquee-content">
       <div class="marquee-item">C++ <span>★</span></div>
@@ -104,15 +170,23 @@
       <p>When I'm not debugging or optimizing algorithms, I'm building web applications with clean UI and smooth interactions. Every project is a chance to learn something new.</p>
     </div>
     <div class="code-block reveal">
-      <span class="code-line code-comment">// My approach to engineering</span>
-      <span class="code-line"><span class="code-keyword">while</span> (alive) {</span>
-      <span class="code-line">  <span class="code-function">solve</span>(<span class="code-string">"problems"</span>);</span>
-      <span class="code-line">  <span class="code-function">write</span>(<span class="code-string">"clean code"</span>);</span>
-      <span class="code-line">  <span class="code-function">build</span>(<span class="code-string">"cool stuff"</span>);</span>
-      <span class="code-line">  <span class="code-function">learn</span>(<span class="code-string">"constantly"</span>);</span>
-      <span class="code-line">  <span class="code-function">repeat</span>();</span>
-      <span class="code-line">}</span>
-      <span class="code-line code-comment">// That's the loop.</span>
+      <div class="code-header">
+        <span class="code-lang">C++</span>
+        <span class="code-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <pre><code><span class="code-comment">// My approach to engineering</span>
+<span class="code-keyword">while</span> (alive) {
+  <span class="code-function">solve</span>(<span class="code-string">"problems"</span>);
+  <span class="code-function">write</span>(<span class="code-string">"clean code"</span>);
+  <span class="code-function">build</span>(<span class="code-string">"cool stuff"</span>);
+  <span class="code-function">learn</span>(<span class="code-string">"constantly"</span>);
+  <span class="code-function">repeat</span>();
+}
+<span class="code-comment">// That's the loop.</span></code></pre>
     </div>
   </div>
 </section>
@@ -132,7 +206,7 @@
     <div class="skills-category reveal">
       <div class="category-label">Programming Languages</div>
       <div class="skills-list">
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">C++</div>
             <div class="skill-icons">
@@ -140,8 +214,11 @@
             </div>
           </div>
           <div class="skill-level">ADVANCED — Primary language for DSA</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="90"></div>
+          </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">Python</div>
             <div class="skill-icons">
@@ -149,8 +226,11 @@
             </div>
           </div>
           <div class="skill-level">INTERMEDIATE — Scripting & automation</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="70"></div>
+          </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">JavaScript</div>
             <div class="skill-icons">
@@ -158,6 +238,9 @@
             </div>
           </div>
           <div class="skill-level">INTERMEDIATE — Web development</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="75"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -165,7 +248,7 @@
     <div class="skills-category reveal">
       <div class="category-label">Core Competencies</div>
       <div class="skills-list">
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">Data Structures</div>
             <div class="skill-icons">
@@ -173,8 +256,11 @@
             </div>
           </div>
           <div class="skill-level">Arrays, LinkedLists, Trees, Graphs</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="80"></div>
+          </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">Algorithms</div>
             <div class="skill-icons">
@@ -182,6 +268,9 @@
             </div>
           </div>
           <div class="skill-level">Sorting, Searching, DP, Greedy</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="75"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -189,7 +278,7 @@
     <div class="skills-category reveal">
       <div class="category-label">Web Technologies</div>
       <div class="skills-list">
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">HTML & CSS</div>
             <div class="skill-icons">
@@ -198,8 +287,11 @@
             </div>
           </div>
           <div class="skill-level">Responsive design, modern layouts</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="85"></div>
+          </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item reveal">
           <div class="skill-header">
             <div class="skill-name">Git & GitHub</div>
             <div class="skill-icons">
@@ -208,6 +300,9 @@
             </div>
           </div>
           <div class="skill-level">Version control, collaboration</div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-progress="80"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -240,9 +335,9 @@
         </p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar">
-            <div class="learning-progress-fill" style="width: 35%"></div>
+            <div class="learning-progress-fill" style="width: 55%"></div>
           </div>
-          <span class="learning-percentage">35%</span>
+          <span class="learning-percentage">55%</span>
         </div>
       </div>
 
@@ -259,9 +354,9 @@
         </p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar">
-            <div class="learning-progress-fill" style="width: 40%"></div>
+            <div class="learning-progress-fill" style="width: 45%"></div>
           </div>
-          <span class="learning-percentage">40%</span>
+          <span class="learning-percentage">45%</span>
         </div>
       </div>
 
@@ -278,9 +373,9 @@
         </p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar">
-            <div class="learning-progress-fill" style="width: 0%"></div>
+            <div class="learning-progress-fill" style="width: 12%"></div>
           </div>
-          <span class="learning-percentage">0%</span>
+          <span class="learning-percentage">12%</span>
         </div>
       </div>
 
@@ -297,9 +392,9 @@
         </p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar">
-            <div class="learning-progress-fill" style="width: 10%"></div>
+            <div class="learning-progress-fill" style="width: 25%"></div>
           </div>
-          <span class="learning-percentage">10%</span>
+          <span class="learning-percentage">25%</span>
         </div>
       </div>
     </div>
@@ -370,6 +465,22 @@
         <div class="timeline-title">Started BCA</div>
         <div class="timeline-desc">Enrolled in Bachelor of Computer Applications — finally all-in on CS. Diving into data structures, algorithms, databases, and software engineering with full commitment.</div>
         <span class="timeline-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> BCA</span>
+      </div>
+    </div>
+
+    <!-- Mid 2025 - C++ & Coding Blocks -->
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">Mid 2025</div>
+        <div class="timeline-type">Course</div>
+        <div class="timeline-title">Started C++ & Joined DSA Course at Coding Blocks</div>
+        <div class="timeline-desc">Picked up C++ seriously and enrolled in the DSA in C++ course at Coding Blocks, NSP. This is where the real foundation was laid — pointers, memory management, STL, and structured problem-solving from scratch.</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+          <span class="timeline-tag"><i class="devicon-cplusplus-plain"></i> C++</span>
+          <span class="timeline-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> DSA</span>
+          <span class="timeline-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Coding Blocks</span>
+        </div>
       </div>
     </div>
 
@@ -458,11 +569,11 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" class="project-link" target="_blank">
+          <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" class="project-link" target="_blank" rel="noopener">
             <span>View on GitHub</span>
             <span>→</span>
           </a>
-          <a href="https://jeet-dev.netlify.app/" class="project-link" target="_blank">
+          <a href="https://jeet-dev.netlify.app/" class="project-link" target="_blank" rel="noopener">
             <span>Live Demo</span>
             <span>→</span>
           </a>
@@ -473,23 +584,31 @@
     <div class="project-card reveal">
       <div class="project-header">
         <div class="project-info">
-          <div class="project-type">Coming Soon</div>
-          <h3>More Projects Loading...</h3>
+          <div class="project-type">DSA / Algorithms</div>
+          <h3>DSA Solutions in C++</h3>
         </div>
         <div class="project-number">02</div>
       </div>
       <div class="project-body">
         <div>
           <p class="project-description">
-            Currently working on new projects involving full-stack development and advanced DSA implementations. Check back soon or visit my GitHub for the latest updates.
+            A growing collection of Data Structures & Algorithms problems solved in C++. Covers arrays, linked lists, trees, graphs, dynamic programming, recursion, sorting, and more — written with clean logic and optimal time complexity in mind.
           </p>
           <div class="tech-stack">
-            <span class="tech-tag">In Progress</span>
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Data Structures</span>
+            <span class="tech-tag">Algorithms</span>
+            <span class="tech-tag">Problem Solving</span>
+            <span class="tech-tag">Active</span>
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jeet-43" class="project-link" target="_blank">
-            <span>Follow Progress</span>
+          <a href="https://github.com/jeet-43/dsa-cpp" class="project-link" target="_blank" rel="noopener">
+            <span>View on GitHub</span>
+            <span>→</span>
+          </a>
+          <a href="https://leetcode.com/u/Jeet_16/" class="project-link" target="_blank" rel="noopener">
+            <span>My LeetCode Profile</span>
             <span>→</span>
           </a>
         </div>
@@ -530,7 +649,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jeet-43" class="project-link" target="_blank">
+          <a href="https://github.com/jeet-43" class="project-link" target="_blank" rel="noopener">
             <span>Visit Profile</span>
             <span>→</span>
           </a>
@@ -558,7 +677,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://www.linkedin.com/in/jeet-makhija/" class="project-link" target="_blank">
+          <a href="https://www.linkedin.com/in/jeet-makhija/" class="project-link" target="_blank" rel="noopener">
             <span>Visit Profile</span>
             <span>→</span>
           </a>
@@ -586,7 +705,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://leetcode.com/u/Jeet_16/" class="project-link" target="_blank">
+          <a href="https://leetcode.com/u/Jeet_16/" class="project-link" target="_blank" rel="noopener">
             <span>Visit Profile</span>
             <span>→</span>
           </a>
@@ -613,13 +732,14 @@
     </p>
     
     <div class="contact-methods reveal">
-      <a href="mailto:jeetmakhija2@gmail.com" class="contact-item">
+      <div class="contact-item email-card" role="button" tabindex="0" aria-label="Copy email address" id="copy-email-btn" style="cursor:none;">
+        <span class="copy-hint">click to copy</span>
         <div class="contact-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <div class="contact-label">Email</div>
-        <div class="contact-value">jeetmakhija2@gmail.com</div>
-      </a>
+        <div class="contact-value" id="email-display">jeetmakhija2@gmail.com</div>
+      </div>
       <div class="contact-item">
         <div class="contact-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -629,14 +749,20 @@
       </div>
       <div class="contact-item">
         <div class="contact-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <div class="contact-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </div>
-        <div class="contact-label">Status</div>
-        <div class="contact-value">Open to Work</div>
-      </div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">jeet-makhija</div>
+      </a>
     </div>
   </div>
 </section>
+
+
+<!-- Toast notification -->
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon">✓</span> Email copied to clipboard!</div>
+</main>
 
 <!-- Footer -->
 <footer>
@@ -645,13 +771,16 @@
       © 2026 Jeet Makhija — Built from scratch with code and caffeine
     </div>
     <div class="footer-right">
-      jeet.dev
+        <a href="https://github.com/jeet-43" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/jeet-makhija/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://leetcode.com/u/Jeet_16/" target="_blank" rel="noopener" class="footer-link">LeetCode</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Custom JavaScript -->
+<!-- Script -->
 <script src="script.js"></script>
-
 </body>
 </html>
