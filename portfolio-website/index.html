@@ -287,10 +287,170 @@
 </nav>
 
 <main id="main-content">
+<style>
+/* ── HERO OVERRIDES: minimal & subtle ── */
+
+/* Hide the old particle canvas JS output & grid */
+#particles { display: none !important; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+/* Soft radial glow — breathes slowly */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 60% 40%, rgba(88,166,255,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(88,166,255,0.04) 0%, transparent 60%);
+  animation: heroBreath 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes heroBreath {
+  from { opacity: 0.6; transform: scale(1); }
+  to   { opacity: 1;   transform: scale(1.06); }
+}
+
+/* Fine dot grid — very faint, static */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(88,166,255,0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  opacity: 0.5;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 36px 36px; }
+}
+
+/* Floating orbs — very soft, barely visible */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: orbFloat 0.8s ease forwards;
+}
+
+.hero-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(88,166,255,0.08), transparent 70%);
+  top: -100px; right: -80px;
+  animation: orbFloat 1s ease forwards, orbDrift1 18s ease-in-out 1s infinite alternate;
+}
+
+.hero-orb-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(147,197,253,0.06), transparent 70%);
+  bottom: 60px; left: 5%;
+  animation: orbFloat 1.2s ease forwards, orbDrift2 22s ease-in-out 1.2s infinite alternate;
+}
+
+@keyframes orbFloat {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes orbDrift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-30px, 20px) scale(1.08); }
+}
+@keyframes orbDrift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(20px, -15px) scale(1.05); }
+}
+
+/* Hero content sits above */
+.hero-content { position: relative; z-index: 1; }
+
+/* Badge — fades up */
+.hero-badge {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+}
+
+/* Title lines — stagger */
+.hero-title .line { overflow: hidden; }
+
+.hero-title .line:nth-child(1) span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: lineReveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;
+}
+
+.hero-title .line:nth-child(2) span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: lineReveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
+}
+
+/* Subtitle */
+.hero-subtitle {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+}
+
+/* CTA buttons — stagger */
+.hero-cta .btn:nth-child(1) {
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;
+}
+.hero-cta .btn:nth-child(2) {
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 1.0s forwards;
+}
+.hero-cta .btn:nth-child(3) {
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 1.1s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Thin horizontal accent line under title */
+.hero-title::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(88,166,255,0.6), transparent);
+  margin-top: 0.5rem;
+  animation: lineGrow 1s cubic-bezier(0.22,1,0.36,1) 1.1s forwards;
+}
+
+@keyframes lineGrow {
+  to { width: 120px; }
+}
+</style>
+
 <!-- Hero Section -->
 <section class="hero" id="hero">
   <div class="hero-grid" aria-hidden="true"></div>
-  <div class="particles" id="particles" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-badge">Available for Opportunities</div>
     <h1 class="hero-title">
@@ -298,7 +458,7 @@
       <div class="line"><span>MAKHIJA</span></div>
     </h1>
     <p class="hero-subtitle">
-      Software engineer who turns coffee into code, solves problems with C++ & DSA, and builds digital experiences that actually work.
+      Software engineer who turns coffee into code, solves problems with C++ &amp; DSA, and builds digital experiences that actually work.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -317,7 +477,7 @@
       <div class="marquee-item">Web Dev <span>★</span></div>
       <div class="marquee-item">Problem Solving <span>★</span></div>
       <div class="marquee-item">Clean Code <span>★</span></div>
-      <div class="marquee-item">Anthropic Certified <span>★</span></div>
+      <div class="marquee-item">Anthropic Certified ×3 <span>★</span></div>
     </div>
     <div class="marquee-content" aria-hidden="true">
       <div class="marquee-item">C++ <span>★</span></div>
@@ -325,7 +485,7 @@
       <div class="marquee-item">Web Dev <span>★</span></div>
       <div class="marquee-item">Problem Solving <span>★</span></div>
       <div class="marquee-item">Clean Code <span>★</span></div>
-      <div class="marquee-item">Anthropic Certified <span>★</span></div>
+      <div class="marquee-item">Anthropic Certified ×3 <span>★</span></div>
     </div>
   </div>
 </div>
@@ -663,9 +823,25 @@
       <div class="timeline-dot"></div>
       <div class="timeline-card">
         <div class="timeline-year">2026</div>
-        <div class="timeline-type">Certification</div>
-        <div class="timeline-title">Earned Anthropic AI Fluency Certification</div>
-        <div class="timeline-desc">Completed Anthropic's official <strong style="color: var(--light);">AI Fluency for Students</strong> program — a structured course on the AI Fluency Framework, using AI as a learning partner, AI in career planning, and being the human in the loop. Verified credential via Skilljar.</div>
+        <div class="timeline-type">Certifications</div>
+        <div class="timeline-title">3 Anthropic Certifications Earned</div>
+        <div class="timeline-desc">Completed three official Anthropic programs via Skilljar:</div>
+
+        <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="padding: 10px 12px; border: 1px solid var(--glass-border); border-radius: 6px; background: rgba(88,166,255,0.04);">
+            <div style="font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 3px;">AI Fluency for Students</div>
+            <div style="font-size: 12px; color: var(--gray);">AI Fluency Framework · AI as a learning partner · Human in the loop</div>
+          </div>
+          <div style="padding: 10px 12px; border: 1px solid var(--glass-border); border-radius: 6px; background: rgba(88,166,255,0.04);">
+            <div style="font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 3px;">Claude 101</div>
+            <div style="font-size: 12px; color: var(--gray);">Introduction to Claude · Core capabilities · Practical usage</div>
+          </div>
+          <div style="padding: 10px 12px; border: 1px solid var(--glass-border); border-radius: 6px; background: rgba(88,166,255,0.04);">
+            <div style="font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 3px;">Claude Code in Action</div>
+            <div style="font-size: 12px; color: var(--gray);">AI-assisted development · Claude Code workflows · Agentic coding</div>
+          </div>
+        </div>
+
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
           <span class="timeline-tag">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -673,7 +849,7 @@
           </span>
           <span class="timeline-tag">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Verified
+            3 Verified
           </span>
         </div>
       </div>
@@ -925,7 +1101,6 @@
     <div class="cert-card reveal">
       <div class="cert-card-header">
         <div class="cert-icon">
-          <!-- Anthropic-style brain/neural icon -->
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/>
             <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>
@@ -973,6 +1148,102 @@
       </a>
     </div>
 
+    <div class="cert-card reveal">
+      <div class="cert-card-header">
+        <div class="cert-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <div class="cert-badge">Verified ✓</div>
+      </div>
+
+      <div class="cert-issuer">Anthropic</div>
+      <div class="cert-name">Claude 101</div>
+
+      <div class="cert-meta">
+        <div class="cert-meta-item">
+          <span class="cert-meta-label">Issued</span>
+          <span class="cert-meta-value">2026</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-meta-label">Platform</span>
+          <span class="cert-meta-value">Skilljar</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-meta-label">Status</span>
+          <span class="cert-meta-value" style="color: var(--electric);">Active</span>
+        </div>
+      </div>
+
+      <div class="cert-desc">
+        Completed Anthropic's <strong style="color: var(--light);">Claude 101</strong> program — a foundational course introducing Claude's core capabilities, how to interact with it effectively, and practical applications for real-world use.
+      </div>
+
+      <div class="cert-skills">
+        <span class="cert-skill-tag">Claude Fundamentals</span>
+        <span class="cert-skill-tag">Core Capabilities</span>
+        <span class="cert-skill-tag">Practical Usage</span>
+        <span class="cert-skill-tag">Anthropic</span>
+      </div>
+
+      <a href="http://verify.skilljar.com/c/mzbza4pjeotf" target="_blank" rel="noopener" class="cert-verify-link">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Verify Credential
+        </span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-card-header">
+        <div class="cert-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <div class="cert-badge">Verified ✓</div>
+      </div>
+
+      <div class="cert-issuer">Anthropic</div>
+      <div class="cert-name">Claude Code in Action</div>
+
+      <div class="cert-meta">
+        <div class="cert-meta-item">
+          <span class="cert-meta-label">Issued</span>
+          <span class="cert-meta-value">2026</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-meta-label">Platform</span>
+          <span class="cert-meta-value">Skilljar</span>
+        </div>
+        <div class="cert-meta-item">
+          <span class="cert-meta-label">Status</span>
+          <span class="cert-meta-value" style="color: var(--electric);">Active</span>
+        </div>
+      </div>
+
+      <div class="cert-desc">
+        Completed Anthropic's <strong style="color: var(--light);">Claude Code in Action</strong> program — covering AI-assisted software development workflows, using Claude Code as an agentic coding tool, and integrating AI into real development pipelines.
+      </div>
+
+      <div class="cert-skills">
+        <span class="cert-skill-tag">Claude Code</span>
+        <span class="cert-skill-tag">Agentic Coding</span>
+        <span class="cert-skill-tag">AI-Assisted Dev</span>
+        <span class="cert-skill-tag">Dev Workflows</span>
+      </div>
+
+      <a href="http://verify.skilljar.com/c/mki7qt83ht2d" target="_blank" rel="noopener" class="cert-verify-link">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Verify Credential
+        </span>
+        <span>→</span>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -999,7 +1270,7 @@
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <div class="contact-label">Email</div>
-        <div class="contact-value" id="email-display">jeetmakhija2@gmail.com</div>
+        <div class="contact-value" id="email-display"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472d2222332a262c2f2e2d267507202a262e2b6924282a">[email&#160;protected]</a></div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">
