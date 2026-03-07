@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DSA Visualizer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234a8fd4'/%3E%3Cstop offset='100%25' style='stop-color:%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%231a1a1a'/%3E%3Ccircle cx='16' cy='10' r='2.5' fill='url(%23g)'/%3E%3Ccircle cx='10' cy='18' r='2.5' fill='url(%23g)'/%3E%3Ccircle cx='22' cy='18' r='2.5' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='26' r='2.5' fill='url(%23g)'/%3E%3Cpath d='M16 10 L10 18 M16 10 L22 18 M10 18 L16 26 M22 18 L16 26' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="logo" id="logoLink" style="cursor:default;">DSA <em>Visualizer</em></div>
+      <div class="header-controls">
+        <button class="sound-toggle" id="soundToggle" title="Toggle sound">
+          <span class="sound-toggle-icon">🔇</span>
+          <span class="sound-toggle-label">Off</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <span class="theme-toggle-icon">☀</span>
+          <span class="theme-toggle-label">Light</span>
+        </button>
+        <div class="header-meta">10 Algorithms</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div style="border-bottom:1px solid var(--border);">
+  <div class="wrap" style="padding-top:0;padding-bottom:0;">
+    <nav class="algo-nav">
+      <div class="nav-group">
+        <label class="nav-label" for="sortSelect">Sorting Algorithms</label>
+        <select class="algo-select" id="sortSelect">
+          <option value="">Choose a sort...</option>
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+          <option value="counting">Counting Sort</option>
+        </select>
+      </div>
+      <div class="algo-divider"></div>
+      <div class="nav-group">
+        <label class="nav-label" for="techniqueSelect">Techniques</label>
+        <select class="algo-select" id="techniqueSelect">
+          <option value="">Choose a technique...</option>
+          <option value="twopointers">Two Pointers</option>
+          <option value="slidingwindow">Sliding Window</option>
+        </select>
+      </div>
+      <div class="algo-divider"></div>
+      <div class="nav-group">
+        <label class="nav-label" for="searchSelect">Search Algorithms</label>
+        <select class="algo-select" id="searchSelect">
+          <option value="">Choose a search...</option>
+          <option value="linear">Linear Search</option>
+          <option value="binary">Binary Search</option>
+        </select>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="body-grid">
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-section-label">Algorithm</div>
+        <div class="algo-title" id="algoTitle">Bubble Sort</div>
+        <div class="algo-tags" id="algoTags"></div>
+        <p class="algo-desc" id="algoDesc"></p>
+      </div>
+      <div>
+        <div class="sidebar-section-label">Complexity</div>
+        <div class="complexity-grid" id="cxGrid"></div>
+      </div>
+      <div>
+        <div class="sidebar-section-label">Controls</div>
+        <div class="ctrl-group" id="sizeCtrl">
+          <div class="ctrl-label">Array Size <span id="sizeVal">20</span></div>
+          <input type="range" id="sizeSlider" min="5" max="60" value="20">
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-label">Speed <span id="speedVal">Medium</span></div>
+          <input type="range" id="speedSlider" min="1" max="5" value="3">
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-label">Custom Array</div>
+          <input type="text" id="customInput" placeholder="8, 34, 12, 56, 90">
+          <button class="apply-btn" id="applyCustom">Apply</button>
+        </div>
+        <div class="ctrl-group" id="targetCtrl" style="display:none">
+          <div class="ctrl-label">Search Target</div>
+          <input type="number" id="targetInput" placeholder="e.g. 42">
+        </div>
+        <div class="ctrl-group" id="windowCtrl" style="display:none">
+          <div class="ctrl-label">Window Size <span id="windowSizeVal">3</span></div>
+          <input type="range" id="windowSlider" min="2" max="8" value="3">
+        </div>
+        <div class="ctrl-group" id="targetSumCtrl" style="display:none">
+          <div class="ctrl-label">Target Sum</div>
+          <input type="number" id="targetSumInput" placeholder="e.g. 10">
+        </div>
+        <div class="ctrl-group" id="presetCtrl">
+          <div class="ctrl-label">Presets</div>
+          <div class="preset-group">
+            <button class="preset-btn preset-best"  id="presetBest" >Best  <span class="preset-case">(O(n))</span></button>
+            <button class="preset-btn preset-avg"   id="presetAvg"  >Avg   <span class="preset-case">(O(n²))</span></button>
+            <button class="preset-btn preset-worst" id="presetWorst">Worst <span class="preset-case">(O(n²))</span></button>
+            <button class="preset-btn preset-equal" id="presetEqual">Equal <span class="preset-case">(edge)</span></button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sidebar-section-label">Legend</div>
+        <div class="legend-list" id="legendList"></div>
+      </div>
+    </aside>
+
+    <section class="main-panel">
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-container">
+          <button class="theme-toggle" id="welcomeThemeToggle" style="position:absolute;top:24px;right:32px;">
+            <span class="theme-toggle-icon">☀</span>
+            <span class="theme-toggle-label">Light</span>
+          </button>
+          <h2 class="welcome-main-title">DSA VISUALIZER</h2>
+          <div class="welcome-header">
+            <div class="welcome-branding">
+              <div class="welcome-tagline">Interactive Algorithm Education</div>
+              <h1 class="welcome-hero">DSA <em>Visualizer</em></h1>
+              <a href="https://www.linkedin.com/in/jeet-makhija" target="_blank" rel="noopener noreferrer" class="by-jeet" style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-decoration:none;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;display:inline-block;margin-top:8px;">by Jeet Makhija</a>
+            </div>
+            <button class="start-btn" id="startBtn">Let's Begin →</button>
+          </div>
+          <p class="welcome-subtitle">Transform abstract algorithms into visual understanding. Master sorting, searching, and problem-solving techniques through interactive step-by-step demonstrations.</p>
+          <div class="welcome-content">
+            <div class="welcome-main">
+              <div class="content-title">What You'll Experience</div>
+              <div class="features-grid">
+                <div class="feature-item"><div class="feature-number">01</div><div class="feature-title">Visual Execution</div><div class="feature-desc">Watch every step with color-coded highlights</div></div>
+                <div class="feature-item"><div class="feature-number">02</div><div class="feature-title">Full Control</div><div class="feature-desc">Adjust speed and customize input data</div></div>
+                <div class="feature-item"><div class="feature-number">03</div><div class="feature-title">Clear Explanations</div><div class="feature-desc">Understand the how and why of each algorithm</div></div>
+                <div class="feature-item"><div class="feature-number">04</div><div class="feature-title">Complete Coverage</div><div class="feature-desc">10 essential algorithms from basics to advanced</div></div>
+              </div>
+            </div>
+            <div class="welcome-sidebar">
+              <div class="content-title">Available Algorithms</div>
+              <div class="algo-list">
+                <div class="algo-category"><div class="algo-category-title">Sorting</div><div class="algo-items">Bubble · Selection · Insertion · Merge · Quick · Counting</div></div>
+                <div class="algo-category"><div class="algo-category-title">Techniques</div><div class="algo-items">Two Pointers · Sliding Window</div></div>
+                <div class="algo-category"><div class="algo-category-title">Searching</div><div class="algo-items">Linear Search · Binary Search</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="welcome-footer">
+            <span class="footer-text">Master algorithms through visualization</span>
+            <span class="footer-divider">·</span>
+            <span class="footer-credit">Built by Jeet Makhija</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="vizArea" class="hidden">
+        <div class="status-line">
+          <div class="status-msg">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">Press Run to begin</span>
+          </div>
+          <div class="step-info" id="stepInfo">— / —</div>
+        </div>
+        <div class="viz-canvas" id="vizCanvas"></div>
+        <div class="code-panel" id="codePanel">
+          <div class="code-panel-header">
+            <span class="code-panel-title" id="codePanelTitle">Pseudocode</span>
+            <div class="lang-tabs" id="langTabs">
+              <button class="lang-tab active" data-lang="pseudo">Pseudo</button>
+              <button class="lang-tab" data-lang="python">Python</button>
+              <button class="lang-tab" data-lang="cpp">C++</button>
+              <button class="lang-tab" data-lang="java">Java</button>
+            </div>
+          </div>
+          <div class="code-body" id="codeBody"></div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-solid"   id="runBtn">Run</button>
+          <button class="btn btn-outline" id="stepBackBtn" disabled>← Back</button>
+          <button class="btn btn-outline" id="stepBtn">Step →</button>
+          <button class="btn btn-outline" id="pauseBtn" disabled>Pause</button>
+          <div class="btn-divider"></div>
+          <button class="btn btn-ghost"   id="resetBtn">Reset</button>
+          <button class="btn btn-ghost"   id="shuffleBtn">Shuffle</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
