@@ -54,9 +54,97 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  
+  <!-- tsParticles CDN for hero particles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap&font-display=swap" rel="stylesheet">
+
+    <style>
+      html { font-size: 18px; }
+      body { letter-spacing: 0.01em; }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', 'Space Grotesk', Arial, sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #f0f6ff;
+        margin-bottom: 0.5em;
+      }
+      .summary {
+        font-size: 1.35rem;
+        font-family: 'Outfit', 'Space Grotesk', Arial, sans-serif;
+        color: #b3cdfa;
+        margin: 2.5rem 0 2rem 0;
+        max-width: 700px;
+        line-height: 1.5;
+        font-weight: 500;
+      }
+      .btn.cta {
+        font-size: 1.1rem;
+        padding: 22px 48px;
+        background: linear-gradient(90deg, #58a6ff 0%, #93c5fd 100%);
+        color: #0d1117 !important;
+        border: none;
+        box-shadow: 0 0 40px 10px #58a6ff44;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        border-radius: 6px;
+        margin-right: 12px;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      }
+      .btn.cta:hover {
+        background: #f0f6ff;
+        color: #0d1117 !important;
+        box-shadow: 0 0 60px 20px #58a6ff66;
+      }
+      .project-impact {
+        font-size: 1rem;
+        color: #93c5fd;
+        margin-top: 0.5em;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 500;
+      }
+      .contact-form {
+        margin-top: 2rem;
+        background: rgba(13,17,23,0.7);
+        border: 1px solid #21262d;
+        border-radius: 8px;
+        padding: 2rem;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .contact-form label {
+        display: block;
+        margin-bottom: 0.5em;
+        color: #b3cdfa;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 0.7em;
+        margin-bottom: 1em;
+        border-radius: 4px;
+        border: 1px solid #21262d;
+        background: #0d1117;
+        color: #f0f6ff;
+        font-family: 'Outfit', sans-serif;
+        font-size: 1rem;
+      }
+      .contact-form button {
+        background: #58a6ff;
+        color: #0d1117;
+        border: none;
+        padding: 0.8em 2em;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .contact-form button:hover {
+        background: #93c5fd;
+      }
+    </style>
   
   <!-- Devicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -448,6 +536,7 @@
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
+  <div id="hero-particles"></div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
@@ -457,13 +546,13 @@
       <div class="line"><span>JEET</span></div>
       <div class="line"><span>MAKHIJA</span></div>
     </h1>
-    <p class="hero-subtitle">
-      Software engineer who turns coffee into code, solves problems with C++ &amp; DSA, and builds digital experiences that actually work.
-    </p>
+    <div class="summary">
+      Dedicated SWE intern candidate with a passion for building robust software, mastering algorithms, and delivering clean, user-focused web experiences. Eager to contribute and grow in a world-class engineering team.
+    </div>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="resume.html" target="_blank" rel="noopener" class="btn">View Resume</a>
-      <a href="#contact" class="btn">Get in Touch</a>
+      <a href="resume.html" target="_blank" rel="noopener" class="btn cta">View Resume</a>
+      <a href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener" class="btn cta" style="background:linear-gradient(90deg,#1f6feb 0%,#58a6ff 100%);color:#fff;">Visit AlgoSight</a>
+      <a href="#contact" class="btn cta">Get in Touch</a>
     </div>
   </div>
 </section>
@@ -720,7 +809,7 @@
       <div class="timeline-dot"></div>
       <div class="timeline-card">
         <div class="timeline-year">2023</div>
-        <div class="timeline-type">Milestone</div>
+          <div class="timeline-year">Feb–Mar 2026</div>
         <div class="timeline-title">Wrote My First Line of Code</div>
         <div class="timeline-desc">Class 10th. Python. <code style="color: var(--electric); font-family: 'IBM Plex Mono', monospace;">print("Hello, World!")</code> — one line that changed everything. That tiny output on screen sparked a curiosity that hasn't stopped since.</div>
         <span class="timeline-tag"><i class="devicon-python-plain"></i> Python</span>
@@ -805,10 +894,10 @@
     <div class="timeline-item reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <div class="timeline-year">Jan — Feb 2026</div>
+        <div class="timeline-year">Jan — Mar 2026</div>
         <div class="timeline-type">Project</div>
-        <div class="timeline-title">Built DSA Visualizer</div>
-        <div class="timeline-desc">Designed and deployed an interactive algorithm visualizer with 10 sorting, searching & technique algorithms. Features step-by-step animation, live pseudocode highlighting, multi-language code snippets, sound mode, and custom array input — all in vanilla JS with zero dependencies.</div>
+        <div class="timeline-title">Built AlgoSight</div>
+        <div class="timeline-desc">Built a free DSA visualizer that I wish existed when I was learning algorithms. 34 algorithms across sorting, searching, pathfinding & techniques — with step-by-step forward/backward controls, race mode, learn mode narration, live code in Python/C++/Java/JS, recursion trees, GIF export & shareable URLs. No install. No signup. Just open and learn.</div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
           <span class="timeline-tag"><i class="devicon-javascript-plain"></i> JavaScript</span>
           <span class="timeline-tag"><i class="devicon-html5-plain"></i> HTML</span>
@@ -893,32 +982,34 @@
   </div>
   <div class="projects-container">
 
+
     <div class="project-card reveal">
       <div class="project-header">
         <div class="project-info">
-          <div class="project-type">Web Development</div>
-          <h3>Personal Portfolio</h3>
+          <div class="project-type">Algorithm Visualizer</div>
+          <h3>AlgoSight</h3>
         </div>
         <div class="project-number">01</div>
       </div>
       <div class="project-body">
         <div>
-          <p class="project-description">
-            A modern, responsive portfolio website featuring custom animations, interactive elements, and clean design. Built from scratch with vanilla JavaScript and CSS, focusing on performance and user experience.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Animations</span>
-            <span class="tech-tag">Responsive</span>
-          </div>
+            <p class="project-description">
+              Built a free DSA visualizer that I wish existed when I was learning algorithms. 34 algorithms across sorting, searching, pathfinding & techniques — with step-by-step forward/backward controls, race mode, learn mode narration, live code in Python/C++/Java/JS, recursion trees, GIF export & shareable URLs. No install. No signup. Just open and learn.
+            </p>
+            <div class="project-impact">Impact: Simplifies learning algorithms visually.</div>
+            <div class="tech-stack">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Algorithms</span>
+              <span class="tech-tag">Generator Functions</span>
+            </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" class="project-link" target="_blank" rel="noopener">
+          <a href="https://github.com/jeet-43/algo-sight" class="project-link" target="_blank" rel="noopener">
             <span>View on GitHub</span><span>→</span>
           </a>
-          <a href="https://jeet-dev.netlify.app/" class="project-link" target="_blank" rel="noopener">
+          <a href="https://algo-sight.netlify.app/#app" class="project-link" target="_blank" rel="noopener">
             <span>Live Demo</span><span>→</span>
           </a>
         </div>
@@ -928,30 +1019,30 @@
     <div class="project-card reveal">
       <div class="project-header">
         <div class="project-info">
-          <div class="project-type">DSA / Education Tool</div>
-          <h3>DSA Visualizer</h3>
+          <div class="project-type">Web Development</div>
+          <h3>Personal Portfolio</h3>
         </div>
         <div class="project-number">02</div>
       </div>
       <div class="project-body">
         <div>
-          <p class="project-description">
-            An interactive browser-based tool to visualize 10 algorithms — sorting, searching, and technique patterns — through step-by-step animation. Features live pseudocode highlighting, multi-language code snippets (Pseudo, Python, C++, Java), sound mode, custom array input, and preset cases. Zero dependencies, pure vanilla JS.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">Algorithms</span>
-            <span class="tech-tag">Generator Functions</span>
-            <span class="tech-tag">Web Audio API</span>
-          </div>
+            <p class="project-description">
+              A modern, responsive portfolio website featuring custom animations, interactive elements, and clean design. Built from scratch with vanilla JavaScript and CSS, focusing on performance and user experience.
+            </p>
+            <div class="project-impact">Impact: Demonstrates advanced front-end skills, accessibility, and a strong sense of design. Used as a template by peers.</div>
+            <div class="tech-stack">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Animations</span>
+              <span class="tech-tag">Responsive</span>
+            </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jeet-43/dsa-visualizer" class="project-link" target="_blank" rel="noopener">
+          <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" class="project-link" target="_blank" rel="noopener">
             <span>View on GitHub</span><span>→</span>
           </a>
-          <a href="https://dsa-visualizer-jeet.netlify.app" class="project-link" target="_blank" rel="noopener">
+          <a href="https://jeet-dev.netlify.app/" class="project-link" target="_blank" rel="noopener">
             <span>Live Demo</span><span>→</span>
           </a>
         </div>
@@ -968,16 +1059,17 @@
       </div>
       <div class="project-body">
         <div>
-          <p class="project-description">
-            A growing collection of Data Structures & Algorithms problems solved in C++. Covers arrays, linked lists, trees, graphs, dynamic programming, recursion, sorting, and more — written with clean logic and optimal time complexity in mind.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Data Structures</span>
-            <span class="tech-tag">Algorithms</span>
-            <span class="tech-tag">Problem Solving</span>
-            <span class="tech-tag">Active</span>
-          </div>
+            <p class="project-description">
+              A growing collection of Data Structures & Algorithms problems solved in C++. Covers arrays, linked lists, trees, graphs, dynamic programming, recursion, sorting, and more — written with clean logic and optimal time complexity in mind.
+            </p>
+            <div class="project-impact">Impact: Consistently ranked in top 10% on LeetCode contests. Solutions referenced by peers.</div>
+            <div class="tech-stack">
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Data Structures</span>
+              <span class="tech-tag">Algorithms</span>
+              <span class="tech-tag">Problem Solving</span>
+              <span class="tech-tag">Active</span>
+            </div>
         </div>
         <div class="project-links">
           <a href="https://github.com/jeet-43/dsa-cpp" class="project-link" target="_blank" rel="noopener">
@@ -1258,19 +1350,17 @@
     </h2>
   </div>
   <div class="contact-content">
-    <h3 class="contact-title reveal">Got a project in mind?<br>Let's make it happen.</h3>
+    <h3 class="contact-title reveal">Let's Connect</h3>
     <p class="contact-subtitle reveal">
-      I'm always interested in hearing about new opportunities, collaborations, or just chatting about tech. Feel free to reach out through any of these channels.
+      Interested in new opportunities, collaborations, or just chatting about tech? Reach out via email or the form below.
     </p>
-    
     <div class="contact-methods reveal">
-      <div class="contact-item email-card" role="button" tabindex="0" aria-label="Copy email address" id="copy-email-btn" style="cursor:none;">
-        <span class="copy-hint">click to copy</span>
+      <div class="contact-item email-card">
         <div class="contact-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <div class="contact-label">Email</div>
-        <div class="contact-value" id="email-display"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472d2222332a262c2f2e2d267507202a262e2b6924282a">[email&#160;protected]</a></div>
+        <div class="contact-value" id="email-display"><a href="mailto:jeet.swe.intern[at]gmail.com">jeet.swe.intern[at]gmail.com</a></div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">
@@ -1287,6 +1377,15 @@
         <div class="contact-value">jeet-makhija</div>
       </div>
     </div>
+    <form class="contact-form" action="mailto:jeet.swe.intern@gmail.com" method="POST" enctype="text/plain">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </div>
 </section>
 
