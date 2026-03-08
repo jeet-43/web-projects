@@ -2,8 +2,6 @@
 
 An interactive, browser-based tool for visualizing classic Data Structures & Algorithms — built to make abstract concepts click through step-by-step animation.
 
-🔗 **Live Demo:** [dsa-visualizer-jeet.netlify.app](https://dsa-visualizer-jeet.netlify.app)
-
 ---
 
 ## Features
