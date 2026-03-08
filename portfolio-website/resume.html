@@ -6,6 +6,19 @@
 <title>Jeet Makhija — Resume</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
+/* Dark mode variables */
+.dark-mode {
+  --navy: #f7f9fb;
+  --navy-2: #dde3ea;
+  --steel: #7eb8f7;
+  --mid: #b3cdfa;
+  --soft: #6b7f96;
+  --rule: #3d5a80;
+  --bg: #0e1b2e;
+  --white: #1a2233;
+  --accent: #58a6ff;
+  --gold: #ffe082;
+}
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -520,8 +533,20 @@ body {
   font-size: 0.58rem;
 }
 </style>
+<script>
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.getElementById('darkModeBtn');
+  if(document.body.classList.contains('dark-mode')) {
+    btn.textContent = '☀️ Light Mode';
+  } else {
+    btn.textContent = '🌙 Dark Mode';
+  }
+}
+</script>
 </head>
 <body>
+  <button id="darkModeBtn" onclick="toggleDarkMode()" style="position:fixed;top:18px;right:24px;z-index:9999;padding:0.5em 1.2em;font-size:1rem;border-radius:6px;border:none;background:#3d5a80;color:#fff;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background 0.2s;">🌙 Dark Mode</button>
 <div class="page">
 
   <!-- ══ HEADER ══ -->
@@ -610,9 +635,9 @@ body {
           <span class="profile-badge">LI</span>
           <span class="profile-url">jeet-makhija</span>
         </a>
-        <a class="profile-item" href="https://dsa-visualizer-jeet.netlify.app" target="_blank">
+        <a class="profile-item" href="https://algo-sight.netlify.app/#app" target="_blank">
           <span class="profile-badge">↗</span>
-          <span class="profile-url">dsa-visualizer-jeet</span>
+          <span class="profile-url">AlgoSight</span>
         </a>
       </div>
 
@@ -632,7 +657,7 @@ body {
         </div>
         <div class="tl-row">
           <span class="tl-yr">Feb '26</span>
-          <span class="tl-desc">Deployed DSA Visualizer; earned 3 Anthropic certifications</span>
+          <span class="tl-desc">Deployed AlgoSight; earned 3 Anthropic certifications</span>
         </div>
         <div class="tl-row">
           <span class="tl-yr">2026 →</span>
@@ -685,6 +710,33 @@ body {
       <div class="section">
         <div class="sec-title">Projects</div>
 
+
+        <div class="entry">
+          <div>
+            <div class="entry-head">AlgoSight</div>
+          </div>
+          <div class="entry-date">Jan – Mar 2026</div>
+          <div class="chips">
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">Generator Functions</span>
+            <span class="chip">Web Audio API</span>
+            <span class="chip">Netlify</span>
+          </div>
+          <div class="bullets">
+            <div class="bullet"><div class="bull-mark"></div>
+              <span class="bull-text">Built a free DSA visualizer that I wish existed when I was learning algorithms. 34 algorithms across sorting, searching, pathfinding & techniques — with step-by-step forward/backward controls, race mode, learn mode narration, live code in Python/C++/Java/JS, recursion trees, GIF export & shareable URLs. No install. No signup. Just open and learn.</span>
+            </div>
+            <div class="bullet"><div class="bull-mark"></div>
+              <span class="bull-text"><strong>Pseudocode highlighting</strong> synced to each animation step; multi-language snippets (Python, C++, Java); Web Audio API sound mode; custom array input — zero dependencies, pure vanilla JS</span>
+            </div>
+            <div class="bullet"><div class="bull-mark"></div>
+              <span class="bull-text">Live: <strong>algo-sight.netlify.app/#app</strong> &nbsp;·&nbsp; Source: <strong>github.com/jeet-43/algo-sight</strong></span>
+            </div>
+          </div>
+        </div>
+
         <div class="entry">
           <div>
             <div class="entry-head">Personal Portfolio Website</div>
@@ -702,32 +754,6 @@ body {
             </div>
             <div class="bullet"><div class="bull-mark"></div>
               <span class="bull-text">Live at <strong>jeet-dev.netlify.app</strong> &nbsp;·&nbsp; Source: <strong>github.com/jeet-43/web-projects/tree/main/portfolio-website</strong></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div>
-            <div class="entry-head">DSA Visualizer</div>
-          </div>
-          <div class="entry-date">Jan – Feb 2026</div>
-          <div class="chips">
-            <span class="chip">JavaScript</span>
-            <span class="chip">HTML</span>
-            <span class="chip">CSS</span>
-            <span class="chip">Generator Functions</span>
-            <span class="chip">Web Audio API</span>
-            <span class="chip">Netlify</span>
-          </div>
-          <div class="bullets">
-            <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text">Interactive visualizer for <strong>10 algorithms</strong> — Bubble, Selection, Insertion, Merge, Quick, Counting Sort, Binary/Linear Search, Two Pointers, Sliding Window — with step-by-step and reverse animation</span>
-            </div>
-            <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text"><strong>Pseudocode highlighting</strong> synced to each animation step; multi-language snippets (Python, C++, Java); Web Audio API sound mode; custom array input — zero dependencies, pure vanilla JS</span>
-            </div>
-            <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text">Live: <strong>dsa-visualizer-jeet.netlify.app</strong> &nbsp;·&nbsp; Source: <strong>github.com/jeet-43/dsa-visualizer</strong></span>
             </div>
           </div>
         </div>
