@@ -6,6 +6,30 @@ Description: Interactive features and animations
 ==================================================
 */
 
+// ==================== HERO PARTICLES ====================
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.tsParticles && document.getElementById('hero-particles')) {
+    tsParticles.load('hero-particles', {
+      fullScreen: { enable: false },
+      background: { color: 'transparent' },
+      particles: {
+        number: { value: 18, density: { enable: true, area: 900 } },
+        color: { value: ['#58a6ff', '#b3cdfa', '#222c3a'] },
+        shape: { type: 'circle' },
+        opacity: { value: 0.18, random: true },
+        size: { value: { min: 2, max: 7 } },
+        move: { enable: true, speed: 0.35, direction: 'none', outModes: 'out', straight: false, random: true },
+        links: { enable: true, distance: 110, color: '#58a6ff', opacity: 0.08, width: 1 },
+      },
+      interactivity: {
+        events: { onHover: { enable: true, mode: 'repulse' }, onClick: { enable: false } },
+        modes: { repulse: { distance: 60 } }
+      },
+      detectRetina: true,
+    });
+  }
+});
+
 // ==================== UTILITY FUNCTIONS ====================
 
 // Debounce function for performance
