@@ -6,30 +6,6 @@ Description: Interactive features and animations
 ==================================================
 */
 
-// ==================== HERO PARTICLES ====================
-document.addEventListener('DOMContentLoaded', function () {
-  if (window.tsParticles && document.getElementById('hero-particles')) {
-    tsParticles.load('hero-particles', {
-      fullScreen: { enable: false },
-      background: { color: 'transparent' },
-      particles: {
-        number: { value: 18, density: { enable: true, area: 900 } },
-        color: { value: ['#58a6ff', '#b3cdfa', '#222c3a'] },
-        shape: { type: 'circle' },
-        opacity: { value: 0.18, random: true },
-        size: { value: { min: 2, max: 7 } },
-        move: { enable: true, speed: 0.35, direction: 'none', outModes: 'out', straight: false, random: true },
-        links: { enable: true, distance: 110, color: '#58a6ff', opacity: 0.08, width: 1 },
-      },
-      interactivity: {
-        events: { onHover: { enable: true, mode: 'repulse' }, onClick: { enable: false } },
-        modes: { repulse: { distance: 60 } }
-      },
-      detectRetina: true,
-    });
-  }
-});
-
 // ==================== UTILITY FUNCTIONS ====================
 
 // Debounce function for performance
@@ -106,27 +82,30 @@ if (mobileMenuToggle) {
 
 // ==================== PARALLAX EFFECTS ====================
 
+const sectionNumbers = document.querySelectorAll('.section-number');
+let parallaxQueued = false;
+
 function parallaxEffect() {
-  const scrolled = window.scrollY;
-  
-  // Hero background parallax
-  const heroGrid = document.querySelector('.hero-grid');
-  if (heroGrid) {
-    heroGrid.style.transform = `translateY(${scrolled * 0.3}px)`;
-  }
-  
   // Section numbers parallax
-  const sectionNumbers = document.querySelectorAll('.section-number');
   sectionNumbers.forEach((num) => {
     const rect = num.getBoundingClientRect();
-    const offset = (window.innerHeight - rect.top) * 0.1;
+    const offset = (window.innerHeight - rect.top) * 0.08;
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      num.style.transform = `translateY(${offset}px)`;
+      num.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
     }
   });
 }
 
-window.addEventListener('scroll', throttle(parallaxEffect, 16));
+function queueParallax() {
+  if (parallaxQueued) return;
+  parallaxQueued = true;
+  requestAnimationFrame(() => {
+    parallaxEffect();
+    parallaxQueued = false;
+  });
+}
+
+window.addEventListener('scroll', queueParallax, { passive: true });
 
 // ==================== SCROLL REVEAL ANIMATIONS ====================
 
@@ -255,6 +234,139 @@ function createParticles() {
   }
 }
 
+function initHeroParticles3D() {
+  const hero = document.querySelector('.hero');
+  const canvas = document.getElementById('hero-particles-3d');
+  if (!hero || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (prefersReducedMotion || !finePointer) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  let width = 0;
+  let height = 0;
+  let centerX = 0;
+  let centerY = 0;
+  let particles = [];
+  let rafId = 0;
+  let pointerX = 0;
+  let pointerY = 0;
+  let targetPointerX = 0;
+  let targetPointerY = 0;
+
+  function createParticle() {
+    const z = Math.random() * 820 + 180;
+    return {
+      x: (Math.random() - 0.5) * width * 1.2,
+      y: (Math.random() - 0.5) * height * 1.2,
+      z,
+      radius: Math.random() * 1.1 + 0.35,
+      speed: Math.random() * 0.72 + 0.34,
+      twinkle: Math.random() * Math.PI * 2,
+      hueShift: Math.random() * 0.18 + 0.88
+    };
+  }
+
+  function setupParticles() {
+    const count = Math.min(72, Math.max(34, Math.floor(width / 22)));
+    particles = Array.from({ length: count }, createParticle);
+  }
+
+  function resizeCanvas() {
+    const rect = hero.getBoundingClientRect();
+    width = Math.max(1, Math.floor(rect.width));
+    height = Math.max(1, Math.floor(rect.height));
+    centerX = width / 2;
+    centerY = height / 2;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.8);
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    setupParticles();
+  }
+
+  function drawParticle(p, index, time) {
+    p.z -= p.speed;
+    if (p.z <= 40) {
+      particles[index] = createParticle();
+      particles[index].z = 980;
+      return;
+    }
+
+    const perspective = 540 / p.z;
+    const x = centerX + (p.x + pointerX * 16) * perspective;
+    const y = centerY + (p.y + pointerY * 12) * perspective;
+    const radius = p.radius * perspective * 2.4;
+
+    if (x < -20 || x > width + 20 || y < -20 || y > height + 20) {
+      particles[index] = createParticle();
+      return;
+    }
+
+    const alphaBase = Math.max(0.08, 1 - p.z / 1250);
+    const twinkle = (Math.sin(time * 0.0009 + p.twinkle) + 1) / 2;
+    const alpha = Math.min(0.52, alphaBase * (0.45 + twinkle * 0.35));
+
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, Math.max(1.2, radius * 2.2));
+    gradient.addColorStop(0, `rgba(147, 197, 253, ${alpha * p.hueShift})`);
+    gradient.addColorStop(0.55, `rgba(88, 166, 255, ${alpha * 0.45})`);
+    gradient.addColorStop(1, 'rgba(88, 166, 255, 0)');
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(x, y, Math.max(0.6, radius * 1.7), 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function animate(time) {
+    pointerX += (targetPointerX - pointerX) * 0.06;
+    pointerY += (targetPointerY - pointerY) * 0.06;
+
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < particles.length; i++) {
+      drawParticle(particles[i], i, time);
+    }
+
+    rafId = requestAnimationFrame(animate);
+  }
+
+  hero.addEventListener('pointermove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    targetPointerX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    targetPointerY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  });
+
+  hero.addEventListener('pointerleave', () => {
+    targetPointerX = 0;
+    targetPointerY = 0;
+  });
+
+  window.addEventListener('resize', debounce(resizeCanvas, 120));
+
+  resizeCanvas();
+  animate(0);
+
+  // Pause drawing when tab is hidden to reduce GPU usage.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    } else if (!rafId) {
+      rafId = requestAnimationFrame(animate);
+    }
+  });
+}
+
 // ==================== DYNAMIC NAV BACKGROUND ====================
 
 let lastScrollTop = 0;
@@ -264,11 +376,11 @@ function handleNavScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
   if (scrollTop > 100) {
-    nav.style.background = 'rgba(13, 17, 23, 0.95)';
-    nav.style.boxShadow = '0 1px 0 rgba(88, 166, 255, 0.15), 0 8px 32px rgba(0, 0, 0, 0.5)';
+    nav.style.background = 'rgba(11, 18, 25, 0.94)';
+    nav.style.boxShadow = '0 1px 0 rgba(122, 184, 255, 0.14), 0 8px 32px rgba(0, 0, 0, 0.52)';
   } else {
-    nav.style.background = 'rgba(13, 17, 23, 0.75)';
-    nav.style.boxShadow = '0 1px 0 rgba(88, 166, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.4)';
+    nav.style.background = 'rgba(11, 18, 25, 0.78)';
+    nav.style.boxShadow = '0 1px 0 rgba(122, 184, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.42)';
   }
   
   lastScrollTop = scrollTop;
@@ -316,6 +428,9 @@ if ('IntersectionObserver' in window) {
 document.addEventListener('DOMContentLoaded', () => {
   // Create particles
   createParticles();
+
+  // Hero 3D starfield particles
+  initHeroParticles3D();
   
   // Initial scroll progress
   updateScrollProgress();
@@ -514,8 +629,13 @@ updateActiveNav();
   const emailDisplay = document.getElementById('email-display');
   if (!emailBtn || !toast) return;
 
-  const EMAIL = 'jeetmakhija2@gmail.com';
+  const EMAIL = atob('amVldG1ha2hpamEyQGdtYWlsLmNvbQ==');
+  const MASKED_EMAIL = 'jeetmakhija2 [at] gmail [dot] com';
   let toastTimer;
+
+  if (emailDisplay) {
+    emailDisplay.textContent = MASKED_EMAIL;
+  }
 
   function showToast() {
     clearTimeout(toastTimer);
@@ -528,11 +648,10 @@ updateActiveNav();
       await navigator.clipboard.writeText(EMAIL);
       // Visual feedback on the card
       if (emailDisplay) {
-        const original = emailDisplay.textContent;
         emailDisplay.textContent = 'Copied!';
         emailDisplay.style.color = 'var(--electric)';
         setTimeout(() => {
-          emailDisplay.textContent = original;
+          emailDisplay.textContent = MASKED_EMAIL;
           emailDisplay.style.color = '';
         }, 2000);
       }
