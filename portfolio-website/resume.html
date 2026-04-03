@@ -3,22 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Jeet Makhija resume - BCA student and software engineering aspirant focused on C++, DSA, and web development."/>
+<meta name="theme-color" content="#0e1b2e"/>
 <title>Jeet Makhija — Resume</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-/* Dark mode variables */
-.dark-mode {
-  --navy: #f7f9fb;
-  --navy-2: #dde3ea;
-  --steel: #7eb8f7;
-  --mid: #b3cdfa;
-  --soft: #6b7f96;
-  --rule: #3d5a80;
-  --bg: #0e1b2e;
-  --white: #1a2233;
-  --accent: #58a6ff;
-  --gold: #ffe082;
-}
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -37,6 +26,44 @@
 @media print {
   body { background: white !important; padding: 0 !important; }
   .page { box-shadow: none !important; width: 100% !important; }
+}
+
+@media (max-width: 900px) {
+  body { padding: 1.1rem 0.55rem; }
+  .page { width: 100%; min-height: auto; }
+  .body { grid-template-columns: 1fr; }
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 1.35rem 1.1rem;
+    gap: 1.25rem;
+  }
+  .main { padding: 1.45rem 1.15rem 1.5rem; }
+  .header {
+    padding: 1.35rem 1.15rem 1.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .contacts { align-items: flex-start; }
+}
+
+@media (max-width: 540px) {
+  html { font-size: 12px; }
+  .name { font-size: 2.25rem; }
+  .skills-2col { grid-template-columns: 1fr; gap: 0.35rem; }
+  .entry { grid-template-columns: 1fr; }
+  .entry-date, .entry-loc {
+    grid-column: 1;
+    text-align: left;
+    padding-top: 0;
+    margin-top: 0.08rem;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
 }
 
 html { font-size: 13px; }
@@ -121,6 +148,30 @@ body {
   transition: color 0.15s;
 }
 .contact-link:hover { color: #7eb8f7; }
+
+.inline-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26, 75, 140, 0.25);
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.inline-link:hover {
+  color: var(--navy-2);
+  border-color: rgba(26, 75, 140, 0.55);
+}
+
+.verify-link {
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.verify-link:hover {
+  text-decoration: underline;
+}
 
 /* ═══════════════════════════════
    BODY — two-column
@@ -289,9 +340,9 @@ body {
 /* Summary */
 .summary {
   font-family: 'EB Garamond', serif;
-  font-size: 0.97rem;
+  font-size: 1rem;
   color: var(--steel);
-  line-height: 1.85;
+  line-height: 1.9;
   font-style: italic;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid var(--rule);
@@ -321,7 +372,7 @@ body {
   align-items: center;
   gap: 0.7rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--navy);
+  border-bottom: 2px solid var(--navy-2);
 }
 
 /* Entry */
@@ -333,7 +384,7 @@ body {
 }
 
 .entry-head {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--navy);
   letter-spacing: -0.01em;
@@ -533,20 +584,8 @@ body {
   font-size: 0.58rem;
 }
 </style>
-<script>
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-  const btn = document.getElementById('darkModeBtn');
-  if(document.body.classList.contains('dark-mode')) {
-    btn.textContent = '☀️ Light Mode';
-  } else {
-    btn.textContent = '🌙 Dark Mode';
-  }
-}
-</script>
 </head>
 <body>
-  <button id="darkModeBtn" onclick="toggleDarkMode()" style="position:fixed;top:18px;right:24px;z-index:9999;padding:0.5em 1.2em;font-size:1rem;border-radius:6px;border:none;background:#3d5a80;color:#fff;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background 0.2s;">🌙 Dark Mode</button>
 <div class="page">
 
   <!-- ══ HEADER ══ -->
@@ -556,10 +595,10 @@ function toggleDarkMode() {
       <div class="role">BCA Student &nbsp;·&nbsp; Software Engineering Aspirant &nbsp;·&nbsp; Delhi, India</div>
     </div>
     <div class="contacts">
-      <a class="contact-link" href="/cdn-cgi/l/email-protection#33595656475e52585b5a59520173545e525a5f1d505c5e"><span class="__cf_email__" data-cfemail="cfa5aaaabba2aea4a7a6a5aefd8fa8a2aea6a3e1aca0a2">[email&#160;protected]</span></a>
-      <a class="contact-link" href="https://github.com/jeet-43" target="_blank">github.com/jeet-43</a>
-      <a class="contact-link" href="https://linkedin.com/in/jeet-makhija" target="_blank">linkedin.com/in/jeet-makhija</a>
-      <a class="contact-link" href="https://jeet-dev.netlify.app" target="_blank">jeet-dev.netlify.app</a>
+      <span class="contact-link">jeetmakhija2 [at] gmail [dot] com</span>
+      <a class="contact-link" href="https://github.com/jeet-43" target="_blank" rel="noopener noreferrer">github.com/jeet-43</a>
+      <a class="contact-link" href="https://linkedin.com/in/jeet-makhija" target="_blank" rel="noopener noreferrer">linkedin.com/in/jeet-makhija</a>
+      <a class="contact-link" href="https://jeet-dev.netlify.app" target="_blank" rel="noopener noreferrer">jeet-dev.netlify.app</a>
     </div>
   </header>
 
@@ -623,21 +662,21 @@ function toggleDarkMode() {
 
       <div class="s-section">
         <div class="s-label">Profiles</div>
-        <a class="profile-item" href="https://leetcode.com/u/Jeet_16" target="_blank">
+        <a class="profile-item" href="https://leetcode.com/u/Jeet_16" target="_blank" rel="noopener noreferrer">
           <span class="profile-badge">LC</span>
           <span class="profile-url">Jeet_16</span>
         </a>
-        <a class="profile-item" href="https://github.com/jeet-43" target="_blank">
+        <a class="profile-item" href="https://github.com/jeet-43" target="_blank" rel="noopener noreferrer">
           <span class="profile-badge">GH</span>
           <span class="profile-url">github.com/jeet-43</span>
         </a>
-        <a class="profile-item" href="https://linkedin.com/in/jeet-makhija" target="_blank">
+        <a class="profile-item" href="https://linkedin.com/in/jeet-makhija" target="_blank" rel="noopener noreferrer">
           <span class="profile-badge">LI</span>
           <span class="profile-url">jeet-makhija</span>
         </a>
-        <a class="profile-item" href="https://algo-sight.netlify.app/#app" target="_blank">
+        <a class="profile-item" href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener noreferrer">
           <span class="profile-badge">↗</span>
-          <span class="profile-url">AlgoSight</span>
+          <span class="profile-url">algo-sight</span>
         </a>
       </div>
 
@@ -657,7 +696,7 @@ function toggleDarkMode() {
         </div>
         <div class="tl-row">
           <span class="tl-yr">Feb '26</span>
-          <span class="tl-desc">Deployed AlgoSight; earned 3 Anthropic certifications</span>
+          <span class="tl-desc">Deployed Algo-Sight; earned 3 Anthropic certifications</span>
         </div>
         <div class="tl-row">
           <span class="tl-yr">2026 →</span>
@@ -710,12 +749,11 @@ function toggleDarkMode() {
       <div class="section">
         <div class="sec-title">Projects</div>
 
-
         <div class="entry">
           <div>
-            <div class="entry-head">AlgoSight</div>
+            <div class="entry-head">Algo-Sight</div>
           </div>
-          <div class="entry-date">Jan – Mar 2026</div>
+          <div class="entry-date">Jan – Feb 2026</div>
           <div class="chips">
             <span class="chip">JavaScript</span>
             <span class="chip">HTML</span>
@@ -726,13 +764,13 @@ function toggleDarkMode() {
           </div>
           <div class="bullets">
             <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text">Built a free DSA visualizer that I wish existed when I was learning algorithms. 34 algorithms across sorting, searching, pathfinding & techniques — with step-by-step forward/backward controls, race mode, learn mode narration, live code in Python/C++/Java/JS, recursion trees, GIF export & shareable URLs. No install. No signup. Just open and learn.</span>
+              <span class="bull-text">Built an interactive visual learning tool covering <strong>34 algorithms</strong> across Sorting, Searching, Pathfinding, and core DSA techniques</span>
             </div>
             <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text"><strong>Pseudocode highlighting</strong> synced to each animation step; multi-language snippets (Python, C++, Java); Web Audio API sound mode; custom array input — zero dependencies, pure vanilla JS</span>
+              <span class="bull-text">Implemented step-by-step controls, speed tuning, live stats, learn mode, race mode, and a pathfinding grid with a clean responsive UI</span>
             </div>
             <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text">Live: <strong>algo-sight.netlify.app/#app</strong> &nbsp;·&nbsp; Source: <strong>github.com/jeet-43/algo-sight</strong></span>
+              <span class="bull-text">Live: <a class="inline-link" href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener noreferrer">algo-sight.netlify.app/#app</a> &nbsp;·&nbsp; Source: <a class="inline-link" href="https://github.com/jeet-43/algo-sight" target="_blank" rel="noopener noreferrer">github.com/jeet-43/algo-sight</a></span>
             </div>
           </div>
         </div>
@@ -753,7 +791,7 @@ function toggleDarkMode() {
               <span class="bull-text">Built entirely <strong>from scratch without frameworks</strong> — custom animated cursor, scroll-reveal, parallax hero section, glassmorphism UI; fully responsive across all viewports</span>
             </div>
             <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text">Live at <strong>jeet-dev.netlify.app</strong> &nbsp;·&nbsp; Source: <strong>github.com/jeet-43/web-projects/tree/main/portfolio-website</strong></span>
+              <span class="bull-text">Live at <a class="inline-link" href="https://jeet-dev.netlify.app" target="_blank" rel="noopener noreferrer">jeet-dev.netlify.app</a> &nbsp;·&nbsp; Source: <a class="inline-link" href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" target="_blank" rel="noopener noreferrer">github.com/jeet-43/web-projects/tree/main/portfolio-website</a></span>
             </div>
           </div>
         </div>
@@ -770,7 +808,7 @@ function toggleDarkMode() {
           </div>
           <div class="bullets">
             <div class="bullet"><div class="bull-mark"></div>
-              <span class="bull-text">Topic-organized GitHub repository of LeetCode solutions in clean, well-commented C++ &nbsp;·&nbsp; Source: <strong>github.com/jeet-43/dsa-cpp</strong></span>
+              <span class="bull-text">Topic-organized GitHub repository of LeetCode solutions in clean, well-commented C++ &nbsp;·&nbsp; Source: <a class="inline-link" href="https://github.com/jeet-43/dsa-cpp" target="_blank" rel="noopener noreferrer">github.com/jeet-43/dsa-cpp</a></span>
             </div>
             <div class="bullet"><div class="bull-mark"></div>
               <span class="bull-text">Covers <strong>Arrays, Strings, Linked Lists, Trees, Recursion, Sorting &amp; Searching</strong>; actively expanding into Dynamic Programming</span>
@@ -784,15 +822,15 @@ function toggleDarkMode() {
         <div class="sec-title">Certifications</div>
         <div class="entry">
           <div><div class="entry-head">AI Fluency for Students</div><div class="entry-org">Anthropic · Skilljar</div></div>
-          <div class="entry-date">2026 · <a href="http://verify.skilljar.com/c/8bra9ib8j458" target="_blank" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:0.58rem;text-decoration:none;">verify ↗</a></div>
+          <div class="entry-date">2026 · <a class="verify-link" href="http://verify.skilljar.com/c/8bra9ib8j458" target="_blank" rel="noopener noreferrer">verify ↗</a></div>
         </div>
         <div class="entry">
           <div><div class="entry-head">Claude 101</div><div class="entry-org">Anthropic · Skilljar</div></div>
-          <div class="entry-date">2026 · <a href="http://verify.skilljar.com/c/mzbza4pjeotf" target="_blank" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:0.58rem;text-decoration:none;">verify ↗</a></div>
+          <div class="entry-date">2026 · <a class="verify-link" href="http://verify.skilljar.com/c/mzbza4pjeotf" target="_blank" rel="noopener noreferrer">verify ↗</a></div>
         </div>
         <div class="entry">
           <div><div class="entry-head">Claude Code in Action</div><div class="entry-org">Anthropic · Skilljar</div></div>
-          <div class="entry-date">2026 · <a href="http://verify.skilljar.com/c/mki7qt83ht2d" target="_blank" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:0.58rem;text-decoration:none;">verify ↗</a></div>
+          <div class="entry-date">2026 · <a class="verify-link" href="http://verify.skilljar.com/c/mki7qt83ht2d" target="_blank" rel="noopener noreferrer">verify ↗</a></div>
         </div>
       </div>
 
