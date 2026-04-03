@@ -54,97 +54,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <!-- tsParticles CDN for hero particles -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap&font-display=swap" rel="stylesheet">
-
-    <style>
-      html { font-size: 18px; }
-      body { letter-spacing: 0.01em; }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Outfit', 'Space Grotesk', Arial, sans-serif;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        color: #f0f6ff;
-        margin-bottom: 0.5em;
-      }
-      .summary {
-        font-size: 1.35rem;
-        font-family: 'Outfit', 'Space Grotesk', Arial, sans-serif;
-        color: #b3cdfa;
-        margin: 2.5rem 0 2rem 0;
-        max-width: 700px;
-        line-height: 1.5;
-        font-weight: 500;
-      }
-      .btn.cta {
-        font-size: 1.1rem;
-        padding: 22px 48px;
-        background: linear-gradient(90deg, #58a6ff 0%, #93c5fd 100%);
-        color: #0d1117 !important;
-        border: none;
-        box-shadow: 0 0 40px 10px #58a6ff44;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        border-radius: 6px;
-        margin-right: 12px;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      }
-      .btn.cta:hover {
-        background: #f0f6ff;
-        color: #0d1117 !important;
-        box-shadow: 0 0 60px 20px #58a6ff66;
-      }
-      .project-impact {
-        font-size: 1rem;
-        color: #93c5fd;
-        margin-top: 0.5em;
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 500;
-      }
-      .contact-form {
-        margin-top: 2rem;
-        background: rgba(13,17,23,0.7);
-        border: 1px solid #21262d;
-        border-radius: 8px;
-        padding: 2rem;
-        max-width: 420px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .contact-form label {
-        display: block;
-        margin-bottom: 0.5em;
-        color: #b3cdfa;
-        font-family: 'IBM Plex Mono', monospace;
-      }
-      .contact-form input, .contact-form textarea {
-        width: 100%;
-        padding: 0.7em;
-        margin-bottom: 1em;
-        border-radius: 4px;
-        border: 1px solid #21262d;
-        background: #0d1117;
-        color: #f0f6ff;
-        font-family: 'Outfit', sans-serif;
-        font-size: 1rem;
-      }
-      .contact-form button {
-        background: #58a6ff;
-        color: #0d1117;
-        border: none;
-        padding: 0.8em 2em;
-        border-radius: 4px;
-        font-weight: 700;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      .contact-form button:hover {
-        background: #93c5fd;
-      }
-    </style>
   
   <!-- Devicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -297,6 +209,12 @@
       display: flex; align-items: center; gap: 8px;
     }
 
+    .cert-verify-link span:first-child::after {
+      content: '↗';
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
     .cert-meta {
       display: flex;
       gap: 20px;
@@ -387,15 +305,28 @@
   background: var(--dark);
 }
 
+.hero-particles-3d {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.45;
+  mask-image: radial-gradient(ellipse 84% 76% at 50% 42%, black 28%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 84% 76% at 50% 42%, black 28%, transparent 100%);
+}
+
 /* Soft radial glow — breathes slowly */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 60% 40%, rgba(88,166,255,0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(88,166,255,0.04) 0%, transparent 60%);
-  animation: heroBreath 8s ease-in-out infinite alternate;
+    radial-gradient(ellipse 74% 62% at 62% 38%, rgba(128,188,255,0.085) 0%, rgba(106,173,246,0.04) 38%, transparent 78%),
+    radial-gradient(ellipse 48% 44% at 18% 72%, rgba(141,201,255,0.06) 0%, rgba(115,183,248,0.03) 46%, transparent 76%),
+    radial-gradient(ellipse 58% 52% at 50% 52%, rgba(88,166,255,0.025) 0%, transparent 80%);
+  animation: heroBreath 10s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
   pointer-events: none;
   z-index: 0;
 }
@@ -414,7 +345,7 @@
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
   opacity: 0.5;
-  animation: gridDrift 20s linear infinite;
+  animation: gridDrift 28s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
@@ -432,53 +363,70 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  animation: orbFloat 0.8s ease forwards;
+  animation: orbFloat 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
 }
 
 .hero-orb-1 {
   width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(88,166,255,0.08), transparent 70%);
   top: -100px; right: -80px;
-  animation: orbFloat 1s ease forwards, orbDrift1 18s ease-in-out 1s infinite alternate;
+  animation: orbFloat 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, orbDrift1 24s cubic-bezier(0.42, 0, 0.2, 1) 1.2s infinite alternate;
 }
 
 .hero-orb-2 {
   width: 300px; height: 300px;
   background: radial-gradient(circle, rgba(147,197,253,0.06), transparent 70%);
   bottom: 60px; left: 5%;
-  animation: orbFloat 1.2s ease forwards, orbDrift2 22s ease-in-out 1.2s infinite alternate;
+  animation: orbFloat 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards, orbDrift2 28s cubic-bezier(0.42, 0, 0.2, 1) 1.35s infinite alternate;
 }
 
 @keyframes orbFloat {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate3d(0, 20px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 @keyframes orbDrift1 {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(-30px, 20px) scale(1.08); }
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-30px, 20px, 0) scale(1.08); }
 }
 @keyframes orbDrift2 {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(20px, -15px) scale(1.05); }
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(20px, -15px, 0) scale(1.05); }
 }
 
 /* Hero content sits above */
-.hero-content { position: relative; z-index: 1; }
+.hero-content { position: relative; z-index: 2; }
 
 /* Badge — fades up */
 .hero-badge {
   opacity: 0;
+  padding: 12px 22px;
+  font-size: 13px;
   transform: translateY(12px);
   animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
 }
 
 /* Title lines — stagger */
+.hero-title {
+  font-size: clamp(78px, 11.5vw, 170px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-bottom: 26px;
+  text-shadow: none;
+}
+
 .hero-title .line { overflow: hidden; }
 
 .hero-title .line:nth-child(1) span {
   display: inline-block;
   opacity: 0;
   transform: translateY(100%);
+  color: rgba(240, 246, 255, 0.95);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: currentColor;
   animation: lineReveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;
 }
 
@@ -486,6 +434,8 @@
   display: inline-block;
   opacity: 0;
   transform: translateY(100%);
+  color: rgba(200, 218, 237, 0.75);
+  -webkit-text-stroke: 0;
   animation: lineReveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
 }
 
@@ -493,10 +443,76 @@
 .hero-subtitle {
   opacity: 0;
   transform: translateY(10px);
+  max-width: 680px;
+  font-size: clamp(24px, 3.2vw, 38px);
+  margin-bottom: 46px;
   animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
 }
 
+.hero-role-text {
+  font-size: clamp(24px, 3.4vw, 40px);
+  min-width: 260px;
+}
+
 /* CTA buttons — stagger */
+.hero-cta {
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.hero-cta .btn {
+  padding: 18px 36px;
+  font-size: 17px;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 246, 255, 0.2);
+  background: linear-gradient(180deg, rgba(235, 244, 255, 0.11) 0%, rgba(220, 235, 252, 0.065) 50%, rgba(206, 224, 243, 0.035) 100%);
+  color: var(--light);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(240, 246, 255, 0.12);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease, color 0.24s ease;
+}
+
+.hero-cta .btn::before {
+  display: none;
+}
+
+.hero-cta .btn:not(.btn-primary):hover {
+  border-color: rgba(147, 197, 253, 0.55);
+  background: linear-gradient(180deg, rgba(130, 191, 255, 0.22) 0%, rgba(106, 173, 246, 0.12) 54%, rgba(88, 166, 255, 0.06) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(88, 166, 255, 0.18);
+  color: #eef6ff;
+}
+
+.hero-cta .btn:not(.btn-primary) {
+  opacity: 0.82;
+}
+
+.hero-cta .btn:not(.btn-primary):hover {
+  opacity: 1;
+}
+
+.hero-cta .btn.btn-primary {
+  background: linear-gradient(135deg, #8bc2ff 0%, #72b4ff 38%, #5fa8f5 72%, #4d98e9 100%);
+  border-color: rgba(111, 178, 255, 0.8);
+  color: #07182a;
+  box-shadow: 0 12px 28px rgba(7, 35, 66, 0.45), 0 0 26px rgba(88, 166, 255, 0.42);
+}
+
+.hero-cta .btn.btn-primary:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #9acbff 0%, #84beff 38%, #70b2ff 72%, #5aa3f3 100%);
+  border-color: rgba(147, 197, 253, 0.95);
+  box-shadow: 0 14px 34px rgba(7, 35, 66, 0.52), 0 0 34px rgba(88, 166, 255, 0.55);
+  color: #051525;
+}
+
+.hero-cta .btn:focus-visible {
+  outline: 2px solid rgba(147, 197, 253, 0.95);
+  outline-offset: 2px;
+}
+
 .hero-cta .btn:nth-child(1) {
   opacity: 0; transform: translateY(10px);
   animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;
@@ -510,12 +526,53 @@
   animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 1.1s forwards;
 }
 
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: clamp(64px, 13vw, 120px);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(20px, 4.2vw, 30px);
+    margin-bottom: 36px;
+  }
+
+  .hero-role-text {
+    font-size: clamp(22px, 4.3vw, 30px);
+  }
+
+  .hero-cta .btn {
+    padding: 16px 30px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: clamp(52px, 16vw, 76px);
+    margin-bottom: 18px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(18px, 6vw, 24px);
+  }
+
+  .hero-role-text {
+    font-size: clamp(20px, 6.5vw, 26px);
+    min-width: 0;
+  }
+
+  .hero-cta .btn {
+    font-size: 15px;
+    padding: 14px 22px;
+  }
+}
+
 @keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes lineReveal {
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 /* Thin horizontal accent line under title */
@@ -524,7 +581,7 @@
   display: block;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(88,166,255,0.6), transparent);
+  background: linear-gradient(90deg, rgba(134, 188, 241, 0.42) 0%, rgba(134, 188, 241, 0.14) 60%, rgba(88, 166, 255, 0) 100%);
   margin-top: 0.5rem;
   animation: lineGrow 1s cubic-bezier(0.22,1,0.36,1) 1.1s forwards;
 }
@@ -536,23 +593,35 @@
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
-  <div id="hero-particles"></div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Available for Opportunities</div>
-    <h1 class="hero-title">
-      <div class="line"><span>JEET</span></div>
-      <div class="line"><span>MAKHIJA</span></div>
-    </h1>
-    <div class="summary">
-      Dedicated SWE intern candidate with a passion for building robust software, mastering algorithms, and delivering clean, user-focused web experiences. Eager to contribute and grow in a world-class engineering team.
+  <canvas class="hero-particles-3d" id="hero-particles-3d" aria-hidden="true"></canvas>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <div class="hero-badge">Available for Opportunities</div>
+      <h1 class="hero-title">
+        <div class="line"><span>JEET</span></div>
+        <div class="line"><span>MAKHIJA</span></div>
+      </h1>
+      <p class="hero-subtitle">
+        <span class="hero-role-text">I am a Problem Solver</span>
+      </p>
+      <div class="hero-cta">
+        <a href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener" class="btn btn-primary">Visit Algo-Sight</a>
+        <a href="resume.html" target="_blank" rel="noopener" class="btn">View Resume</a>
+        <a href="#contact" class="btn">Get in Touch</a>
+      </div>
     </div>
-    <div class="hero-cta">
-      <a href="resume.html" target="_blank" rel="noopener" class="btn cta">View Resume</a>
-      <a href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener" class="btn cta" style="background:linear-gradient(90deg,#1f6feb 0%,#58a6ff 100%);color:#fff;">Visit AlgoSight</a>
-      <a href="#contact" class="btn cta">Get in Touch</a>
+    
+    <div class="github-card reveal">
+      <div class="github-card-header">
+        <img id="github-avatar" class="github-avatar" src="" alt="GitHub Profile" />
+        <div class="github-info">
+          <h3 id="github-name" class="github-name">Jeet Makhija</h3>
+          <a id="github-handle" class="github-handle" href="https://github.com/jeet-43" target="_blank" rel="noopener">@jeet-43</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -561,20 +630,20 @@
 <div class="marquee-section" aria-hidden="true">
   <div class="marquee">
     <div class="marquee-content">
-      <div class="marquee-item">C++ <span>★</span></div>
-      <div class="marquee-item">DSA <span>★</span></div>
-      <div class="marquee-item">Web Dev <span>★</span></div>
-      <div class="marquee-item">Problem Solving <span>★</span></div>
-      <div class="marquee-item">Clean Code <span>★</span></div>
-      <div class="marquee-item">Anthropic Certified ×3 <span>★</span></div>
+      <div class="marquee-item">Algo-Sight Builder <span>★</span></div>
+      <div class="marquee-item">C++ & STL <span>★</span></div>
+      <div class="marquee-item">DSA Focused <span>★</span></div>
+      <div class="marquee-item">Interactive Web Apps <span>★</span></div>
+      <div class="marquee-item">Problem Solving Mindset <span>★</span></div>
+      <div class="marquee-item">Open to Internships <span>★</span></div>
     </div>
     <div class="marquee-content" aria-hidden="true">
-      <div class="marquee-item">C++ <span>★</span></div>
-      <div class="marquee-item">DSA <span>★</span></div>
-      <div class="marquee-item">Web Dev <span>★</span></div>
-      <div class="marquee-item">Problem Solving <span>★</span></div>
-      <div class="marquee-item">Clean Code <span>★</span></div>
-      <div class="marquee-item">Anthropic Certified ×3 <span>★</span></div>
+      <div class="marquee-item">Algo-Sight Builder <span>★</span></div>
+      <div class="marquee-item">C++ & STL <span>★</span></div>
+      <div class="marquee-item">DSA Focused <span>★</span></div>
+      <div class="marquee-item">Interactive Web Apps <span>★</span></div>
+      <div class="marquee-item">Problem Solving Mindset <span>★</span></div>
+      <div class="marquee-item">Open to Internships <span>★</span></div>
     </div>
   </div>
 </div>
@@ -590,10 +659,12 @@
   </div>
   <div class="about-content">
     <div class="about-text reveal">
-      <p>I'm a <strong>BCA student</strong> with one clear goal: becoming a software engineer who builds things that matter.</p>
-      <p>My days revolve around <span class="highlight">C++</span> and <span class="highlight">Data Structures & Algorithms</span> — not because I have to, but because I genuinely enjoy the challenge of solving complex problems efficiently.</p>
-      <p>I believe in <strong>learning by doing</strong>. That's why you'll find me actively coding on GitHub, grinding problems on LeetCode, and constantly pushing myself to improve.</p>
-      <p>When I'm not debugging or optimizing algorithms, I'm building web applications with clean UI and smooth interactions. Every project is a chance to learn something new.</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 12px;"><strong>BCA student</strong> with one clear goal: becoming a software engineer who builds things that matter</li>
+        <li style="margin-bottom: 12px;">Days revolve around <span class="highlight">C++</span> and <span class="highlight">Data Structures & Algorithms</span> — genuinely enjoy solving complex problems efficiently</li>
+        <li style="margin-bottom: 12px;"><strong>Learning by doing</strong>: actively coding on GitHub, grinding problems on LeetCode, constantly pushing to improve</li>
+        <li>Building web applications with clean UI and smooth interactions — every project is a chance to learn something new</li>
+      </ul>
     </div>
     <div class="code-block reveal">
       <div class="code-header">
@@ -637,7 +708,7 @@
             <div class="skill-name">C++</div>
             <div class="skill-icons"><i class="devicon-cplusplus-plain"></i></div>
           </div>
-          <div class="skill-level">ADVANCED — Primary language for DSA</div>
+          <div class="skill-level">ADVANCED: Primary language for DSA</div>
           <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
         </div>
         <div class="skill-item reveal">
@@ -645,7 +716,7 @@
             <div class="skill-name">Python</div>
             <div class="skill-icons"><i class="devicon-python-plain"></i></div>
           </div>
-          <div class="skill-level">INTERMEDIATE — Scripting & automation</div>
+          <div class="skill-level">INTERMEDIATE: Scripting & automation</div>
           <div class="skill-bar"><div class="skill-progress" data-progress="70"></div></div>
         </div>
         <div class="skill-item reveal">
@@ -653,7 +724,7 @@
             <div class="skill-name">JavaScript</div>
             <div class="skill-icons"><i class="devicon-javascript-plain"></i></div>
           </div>
-          <div class="skill-level">INTERMEDIATE — Web development</div>
+          <div class="skill-level">INTERMEDIATE: Web development</div>
           <div class="skill-bar"><div class="skill-progress" data-progress="75"></div></div>
         </div>
       </div>
@@ -736,7 +807,6 @@
           <div class="learning-status">In Progress</div>
         </div>
         <h3 class="learning-title">Advanced DSA</h3>
-        <p class="learning-description">Diving deeper into advanced data structures and algorithms - Dynamic Programming, Graph Algorithms, and System Design patterns.</p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar"><div class="learning-progress-fill" style="width: 55%"></div></div>
           <span class="learning-percentage">55%</span>
@@ -751,7 +821,6 @@
           <div class="learning-status">In Progress</div>
         </div>
         <h3 class="learning-title">Full Stack Development</h3>
-        <p class="learning-description">Expanding my web development skills with React, Node.js, and modern backend technologies to build complete applications.</p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar"><div class="learning-progress-fill" style="width: 45%"></div></div>
           <span class="learning-percentage">45%</span>
@@ -766,7 +835,6 @@
           <div class="learning-status">Next Up</div>
         </div>
         <h3 class="learning-title">System Design</h3>
-        <p class="learning-description">Planning to explore scalable system architecture, microservices, and cloud technologies to understand how large-scale applications work.</p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar"><div class="learning-progress-fill" style="width: 12%"></div></div>
           <span class="learning-percentage">12%</span>
@@ -781,7 +849,6 @@
           <div class="learning-status">Exploring</div>
         </div>
         <h3 class="learning-title">Competitive Programming</h3>
-        <p class="learning-description">Actively participating in coding contests, learning advanced problem-solving techniques, and improving speed and accuracy.</p>
         <div class="learning-progress-container">
           <div class="learning-progress-bar"><div class="learning-progress-fill" style="width: 25%"></div></div>
           <span class="learning-percentage">25%</span>
@@ -809,9 +876,9 @@
       <div class="timeline-dot"></div>
       <div class="timeline-card">
         <div class="timeline-year">2023</div>
-          <div class="timeline-year">Feb–Mar 2026</div>
+        <div class="timeline-type">Milestone</div>
         <div class="timeline-title">Wrote My First Line of Code</div>
-        <div class="timeline-desc">Class 10th. Python. <code style="color: var(--electric); font-family: 'IBM Plex Mono', monospace;">print("Hello, World!")</code> — one line that changed everything. That tiny output on screen sparked a curiosity that hasn't stopped since.</div>
+        <div class="timeline-desc">Class 10th. Python. <code style="color: var(--electric); font-family: 'IBM Plex Mono', monospace;">print("Hello, World!")</code> changed everything. That tiny output on screen sparked a curiosity that hasn't stopped since.</div>
         <span class="timeline-tag"><i class="devicon-python-plain"></i> Python</span>
       </div>
     </div>
@@ -819,10 +886,10 @@
     <div class="timeline-item reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <div class="timeline-year">2023 — 2025</div>
+        <div class="timeline-year">2023 to 2025</div>
         <div class="timeline-type">School Learning</div>
         <div class="timeline-title">HTML, CSS, Python & MySQL</div>
-        <div class="timeline-desc">Over two years of school, built a real foundation across four technologies — structured web pages with HTML, styled them with CSS, automated logic with Python, and managed data with MySQL. This wasn't just theory; it's where the builder mindset took root.</div>
+        <div class="timeline-desc">Over two years of school, built a real foundation across four technologies: structured web pages with HTML, styled them with CSS, automated logic with Python, and managed data with MySQL. This wasn't just theory; it's where the builder mindset took root.</div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
           <span class="timeline-tag"><i class="devicon-html5-plain"></i> HTML</span>
           <span class="timeline-tag"><i class="devicon-css3-plain"></i> CSS</span>
@@ -838,7 +905,7 @@
         <div class="timeline-year">2025</div>
         <div class="timeline-type">Education</div>
         <div class="timeline-title">Completed Class 12th — Commerce</div>
-        <div class="timeline-desc">Wrapped up high school with the commerce stream. While others saw business, I saw logic — and knew software engineering was the path I was built for.</div>
+        <div class="timeline-desc">Wrapped up high school with the commerce stream. While others saw business, I saw logic and knew software engineering was the path I was built for.</div>
         <span class="timeline-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Class 12</span>
       </div>
     </div>
@@ -875,7 +942,7 @@
         <div class="timeline-year">Jan 1, 2026</div>
         <div class="timeline-type">Milestone</div>
         <div class="timeline-title">Joined LeetCode — Day One of the Grind</div>
-        <div class="timeline-desc">New year, new commitment. Started the DSA grind on day one of 2026 — arrays, strings, linked lists. Solving problems daily and building the habit that separates good engineers from great ones.</div>
+        <div class="timeline-desc">New year, new commitment. Started the DSA grind on day one of 2026: arrays, strings, linked lists. Solving problems daily and building the habit that separates good engineers from great ones.</div>
         <span class="timeline-tag"><i class="devicon-leetcode-plain"></i> LeetCode</span>
       </div>
     </div>
@@ -886,7 +953,7 @@
         <div class="timeline-year">Jan 2026</div>
         <div class="timeline-type">Project</div>
         <div class="timeline-title">Built This Portfolio from Scratch</div>
-        <div class="timeline-desc">Designed and coded a full portfolio with vanilla HTML, CSS & JS — custom cursor, scroll animations, dark/light mode, and a responsive layout. Shipped. You're looking at it right now.</div>
+        <div class="timeline-desc">Designed and coded a full portfolio with vanilla HTML, CSS & JS, including custom cursor, scroll animations, dark/light mode, and a responsive layout. Shipped. You're looking at it right now.</div>
         <span class="timeline-tag"><i class="devicon-github-original"></i> Shipped</span>
       </div>
     </div>
@@ -894,52 +961,15 @@
     <div class="timeline-item reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-card">
-        <div class="timeline-year">Jan — Mar 2026</div>
+        <div class="timeline-year">Jan to Feb 2026</div>
         <div class="timeline-type">Project</div>
-        <div class="timeline-title">Built AlgoSight</div>
-        <div class="timeline-desc">Built a free DSA visualizer that I wish existed when I was learning algorithms. 34 algorithms across sorting, searching, pathfinding & techniques — with step-by-step forward/backward controls, race mode, learn mode narration, live code in Python/C++/Java/JS, recursion trees, GIF export & shareable URLs. No install. No signup. Just open and learn.</div>
+        <div class="timeline-title">Built Algo-Sight</div>
+        <div class="timeline-desc">Built Algo-Sight, an interactive DSA learning platform with 34 algorithms across sorting, searching, pathfinding, and core techniques. It delivers step-by-step animations, live stats, and smooth controls in a fully responsive browser experience.</div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
           <span class="timeline-tag"><i class="devicon-javascript-plain"></i> JavaScript</span>
           <span class="timeline-tag"><i class="devicon-html5-plain"></i> HTML</span>
           <span class="timeline-tag"><i class="devicon-css3-plain"></i> CSS</span>
           <span class="timeline-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Deployed</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── NEW: Anthropic Certification ── -->
-    <div class="timeline-item reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-year">2026</div>
-        <div class="timeline-type">Certifications</div>
-        <div class="timeline-title">3 Anthropic Certifications Earned</div>
-        <div class="timeline-desc">Completed three official Anthropic programs via Skilljar:</div>
-
-        <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
-          <div style="padding: 10px 12px; border: 1px solid var(--glass-border); border-radius: 6px; background: rgba(88,166,255,0.04);">
-            <div style="font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 3px;">AI Fluency for Students</div>
-            <div style="font-size: 12px; color: var(--gray);">AI Fluency Framework · AI as a learning partner · Human in the loop</div>
-          </div>
-          <div style="padding: 10px 12px; border: 1px solid var(--glass-border); border-radius: 6px; background: rgba(88,166,255,0.04);">
-            <div style="font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 3px;">Claude 101</div>
-            <div style="font-size: 12px; color: var(--gray);">Introduction to Claude · Core capabilities · Practical usage</div>
-          </div>
-          <div style="padding: 10px 12px; border: 1px solid var(--glass-border); border-radius: 6px; background: rgba(88,166,255,0.04);">
-            <div style="font-size: 12px; font-weight: 700; color: var(--light); margin-bottom: 3px;">Claude Code in Action</div>
-            <div style="font-size: 12px; color: var(--gray);">AI-assisted development · Claude Code workflows · Agentic coding</div>
-          </div>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
-          <span class="timeline-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Anthropic
-          </span>
-          <span class="timeline-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            3 Verified
-          </span>
         </div>
       </div>
     </div>
@@ -950,7 +980,7 @@
         <div class="timeline-year">2026</div>
         <div class="timeline-type">Goals</div>
         <div class="timeline-title">Deep Dive: DSA + Dev + System Design</div>
-        <div class="timeline-desc">The 2026 mission — master DSA patterns, build full-stack projects, study system design fundamentals, and crack a software engineering internship at a great company.</div>
+        <div class="timeline-desc">The 2026 mission: master DSA patterns, build full-stack projects, study system design fundamentals, and crack a software engineering internship at a great company.</div>
         <span class="timeline-tag"><i class="devicon-cplusplus-plain"></i> Active Goal</span>
       </div>
     </div>
@@ -961,7 +991,7 @@
         <div class="timeline-year">Future</div>
         <div class="timeline-type">Vision</div>
         <div class="timeline-title">SWE at a Company That Matters</div>
-        <div class="timeline-desc">The destination — a full-time software engineering role at a company building products that impact people. Writing clean code, solving real problems, and growing fast.</div>
+        <div class="timeline-desc">The destination: a full-time software engineering role at a company building products that impact people. Writing clean code, solving real problems, and growing fast.</div>
         <span class="timeline-tag"><i class="devicon-linkedin-plain"></i> Future SWE</span>
       </div>
     </div>
@@ -982,28 +1012,27 @@
   </div>
   <div class="projects-container">
 
-
     <div class="project-card reveal">
       <div class="project-header">
         <div class="project-info">
-          <div class="project-type">Algorithm Visualizer</div>
-          <h3>AlgoSight</h3>
+          <div class="project-type">DSA / Education Tool</div>
+          <h3>Algo-Sight</h3>
         </div>
         <div class="project-number">01</div>
       </div>
       <div class="project-body">
         <div>
-            <p class="project-description">
-              Built a free DSA visualizer that I wish existed when I was learning algorithms. 34 algorithms across sorting, searching, pathfinding & techniques — with step-by-step forward/backward controls, race mode, learn mode narration, live code in Python/C++/Java/JS, recursion trees, GIF export & shareable URLs. No install. No signup. Just open and learn.
-            </p>
-            <div class="project-impact">Impact: Simplifies learning algorithms visually.</div>
-            <div class="tech-stack">
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">Algorithms</span>
-              <span class="tech-tag">Generator Functions</span>
-            </div>
+          <p class="project-description">
+            Browser-based algorithm education platform that turns abstract logic into clear visuals. Covers 34 algorithms with step-by-step playback, live metrics, learn mode, race mode, and a pathfinding grid in a fast, responsive UI.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">Algorithms</span>
+            <span class="tech-tag">Generator Functions</span>
+            <span class="tech-tag">Web Audio API</span>
+          </div>
         </div>
         <div class="project-links">
           <a href="https://github.com/jeet-43/algo-sight" class="project-link" target="_blank" rel="noopener">
@@ -1026,17 +1055,16 @@
       </div>
       <div class="project-body">
         <div>
-            <p class="project-description">
-              A modern, responsive portfolio website featuring custom animations, interactive elements, and clean design. Built from scratch with vanilla JavaScript and CSS, focusing on performance and user experience.
-            </p>
-            <div class="project-impact">Impact: Demonstrates advanced front-end skills, accessibility, and a strong sense of design. Used as a template by peers.</div>
-            <div class="tech-stack">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">Animations</span>
-              <span class="tech-tag">Responsive</span>
-            </div>
+          <p class="project-description">
+            A modern, responsive portfolio website featuring custom animations, interactive elements, and clean design. Built from scratch with vanilla JavaScript and CSS, focusing on performance and user experience.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Animations</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
         </div>
         <div class="project-links">
           <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" class="project-link" target="_blank" rel="noopener">
@@ -1059,17 +1087,16 @@
       </div>
       <div class="project-body">
         <div>
-            <p class="project-description">
-              A growing collection of Data Structures & Algorithms problems solved in C++. Covers arrays, linked lists, trees, graphs, dynamic programming, recursion, sorting, and more — written with clean logic and optimal time complexity in mind.
-            </p>
-            <div class="project-impact">Impact: Consistently ranked in top 10% on LeetCode contests. Solutions referenced by peers.</div>
-            <div class="tech-stack">
-              <span class="tech-tag">C++</span>
-              <span class="tech-tag">Data Structures</span>
-              <span class="tech-tag">Algorithms</span>
-              <span class="tech-tag">Problem Solving</span>
-              <span class="tech-tag">Active</span>
-            </div>
+          <p class="project-description">
+            A growing collection of Data Structures & Algorithms problems solved in C++. Covers arrays, linked lists, trees, graphs, dynamic programming, recursion, sorting, and more — written with clean logic and optimal time complexity in mind.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Data Structures</span>
+            <span class="tech-tag">Algorithms</span>
+            <span class="tech-tag">Problem Solving</span>
+            <span class="tech-tag">Active</span>
+          </div>
         </div>
         <div class="project-links">
           <a href="https://github.com/jeet-43/dsa-cpp" class="project-link" target="_blank" rel="noopener">
@@ -1107,7 +1134,11 @@
       </div>
       <div class="project-body">
         <div>
-          <p class="project-description">Check out my repositories, coding projects, and development journey. I actively maintain and share my work, from DSA implementations to web development projects.</p>
+          <ul style="list-style: disc; padding-left: 20px; margin: 0; font-size: 15px; color: var(--gray); line-height: 1.6;">
+            <li>Repositories and coding projects</li>
+            <li>DSA implementations</li>
+            <li>Web development projects</li>
+          </ul>
           <div class="tech-stack">
             <span class="tech-tag">Projects</span>
             <span class="tech-tag">Code</span>
@@ -1132,7 +1163,11 @@
       </div>
       <div class="project-body">
         <div>
-          <p class="project-description">Let's connect professionally! Follow my journey in software development, see my latest achievements, and explore opportunities for collaboration and networking.</p>
+          <ul style="list-style: disc; padding-left: 20px; margin: 0; font-size: 15px; color: var(--gray); line-height: 1.6;">
+            <li>Professional network and connections</li>
+            <li>Latest achievements</li>
+            <li>Collaboration opportunities</li>
+          </ul>
           <div class="tech-stack">
             <span class="tech-tag">Networking</span>
             <span class="tech-tag">Career</span>
@@ -1157,7 +1192,11 @@
       </div>
       <div class="project-body">
         <div>
-          <p class="project-description">Track my problem-solving journey and competitive programming progress. I regularly practice DSA problems, participate in contests, and continuously improve my algorithmic thinking.</p>
+          <ul style="list-style: disc; padding-left: 20px; margin: 0; font-size: 15px; color: var(--gray); line-height: 1.6;">
+            <li>DSA problem-solving progress</li>
+            <li>Contest participation</li>
+            <li>Algorithmic thinking improvement</li>
+          </ul>
           <div class="tech-stack">
             <span class="tech-tag">Algorithms</span>
             <span class="tech-tag">Data Structures</span>
@@ -1219,18 +1258,6 @@
         </div>
       </div>
 
-      <div class="cert-desc">
-        Completed Anthropic's official <strong style="color: var(--light);">AI Fluency for Students</strong> program — a 3-module course covering the AI Fluency Framework, applying AI as a learning partner and in career planning, and understanding the human-in-the-loop principle for responsible AI collaboration in academic and professional contexts.
-      </div>
-
-      <div class="cert-skills">
-        <span class="cert-skill-tag">AI Fluency Framework</span>
-        <span class="cert-skill-tag">AI as a Learning Partner</span>
-        <span class="cert-skill-tag">AI in Career Planning</span>
-        <span class="cert-skill-tag">Human in the Loop</span>
-        <span class="cert-skill-tag">Responsible AI</span>
-      </div>
-
       <a href="http://verify.skilljar.com/c/8bra9ib8j458" target="_blank" rel="noopener" class="cert-verify-link">
         <span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1266,17 +1293,6 @@
           <span class="cert-meta-label">Status</span>
           <span class="cert-meta-value" style="color: var(--electric);">Active</span>
         </div>
-      </div>
-
-      <div class="cert-desc">
-        Completed Anthropic's <strong style="color: var(--light);">Claude 101</strong> program — a foundational course introducing Claude's core capabilities, how to interact with it effectively, and practical applications for real-world use.
-      </div>
-
-      <div class="cert-skills">
-        <span class="cert-skill-tag">Claude Fundamentals</span>
-        <span class="cert-skill-tag">Core Capabilities</span>
-        <span class="cert-skill-tag">Practical Usage</span>
-        <span class="cert-skill-tag">Anthropic</span>
       </div>
 
       <a href="http://verify.skilljar.com/c/mzbza4pjeotf" target="_blank" rel="noopener" class="cert-verify-link">
@@ -1316,17 +1332,6 @@
         </div>
       </div>
 
-      <div class="cert-desc">
-        Completed Anthropic's <strong style="color: var(--light);">Claude Code in Action</strong> program — covering AI-assisted software development workflows, using Claude Code as an agentic coding tool, and integrating AI into real development pipelines.
-      </div>
-
-      <div class="cert-skills">
-        <span class="cert-skill-tag">Claude Code</span>
-        <span class="cert-skill-tag">Agentic Coding</span>
-        <span class="cert-skill-tag">AI-Assisted Dev</span>
-        <span class="cert-skill-tag">Dev Workflows</span>
-      </div>
-
       <a href="http://verify.skilljar.com/c/mki7qt83ht2d" target="_blank" rel="noopener" class="cert-verify-link">
         <span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1350,17 +1355,16 @@
     </h2>
   </div>
   <div class="contact-content">
-    <h3 class="contact-title reveal">Let's Connect</h3>
-    <p class="contact-subtitle reveal">
-      Interested in new opportunities, collaborations, or just chatting about tech? Reach out via email or the form below.
-    </p>
+    <h3 class="contact-title reveal">Got a project in mind?<br>Let's make it happen.</h3>
+    
     <div class="contact-methods reveal">
-      <div class="contact-item email-card">
+      <div class="contact-item email-card" role="button" tabindex="0" aria-label="Copy email address" id="copy-email-btn" style="cursor:none;">
+        <span class="copy-hint">click to copy</span>
         <div class="contact-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--electric)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <div class="contact-label">Email</div>
-        <div class="contact-value" id="email-display"><a href="mailto:jeet.swe.intern[at]gmail.com">jeet.swe.intern[at]gmail.com</a></div>
+        <div class="contact-value" id="email-display">jeetmakhija2 [at] gmail [dot] com</div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">
@@ -1377,15 +1381,6 @@
         <div class="contact-value">jeet-makhija</div>
       </div>
     </div>
-    <form class="contact-form" action="mailto:jeet.swe.intern@gmail.com" method="POST" enctype="text/plain">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
   </div>
 </section>
 
@@ -1400,14 +1395,123 @@
       © 2026 Jeet Makhija — Built from scratch with code and caffeine
     </div>
     <div class="footer-right">
-      <a href="https://github.com/jeet-43" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/jeet-makhija/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-      &nbsp;·&nbsp;
-      <a href="https://leetcode.com/u/Jeet_16/" target="_blank" rel="noopener" class="footer-link">LeetCode</a>
+      <div class="footer-nav">
+        <a href="#about" class="footer-link">About</a>
+        <span>·</span>
+        <a href="#projects" class="footer-link">Projects</a>
+        <span>·</span>
+        <a href="#profiles" class="footer-link">Profiles</a>
+        <span>·</span>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <a href="https://github.com/jeet-43" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/jeet-makhija/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://leetcode.com/u/Jeet_16/" target="_blank" rel="noopener" class="footer-link">LeetCode</a>
+      </div>
     </div>
   </div>
 </footer>
+
+<script>
+  // Hero role text animation - smooth and minimal
+  const roles = [
+    "I am a Problem Solver",
+    "I am a DSA Intermediate",
+    "I am a C++ Developer",
+    "I am a Web Builder",
+    "I am a Software Engineer"
+  ];
+  
+  let currentRoleIndex = 0;
+  let autoPlayInterval;
+  const roleElement = document.querySelector('.hero-role-text');
+  
+  function changeRole(index) {
+    if (roleElement) {
+      roleElement.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        currentRoleIndex = index % roles.length;
+        roleElement.textContent = roles[currentRoleIndex];
+        roleElement.style.opacity = '1';
+      }, 250);
+    }
+  }
+  
+  function nextRole() {
+    changeRole(currentRoleIndex + 1);
+    resetAutoPlay();
+  }
+  
+  function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    startAutoPlay();
+  }
+  
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      changeRole(currentRoleIndex + 1);
+    }, 3000);
+  }
+  
+  if (roleElement) {
+    // Click to change role
+    roleElement.addEventListener('click', nextRole);
+    
+    // Pause on hover, resume on leave
+    roleElement.addEventListener('mouseenter', () => {
+      clearInterval(autoPlayInterval);
+    });
+    
+    roleElement.addEventListener('mouseleave', () => {
+      startAutoPlay();
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextRole();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        changeRole(currentRoleIndex - 1);
+        resetAutoPlay();
+      }
+    });
+    
+    // Start animation
+    startAutoPlay();
+  }
+</script>
+
+<script>
+  // Fetch GitHub data and populate the card
+  async function fetchGitHubData() {
+    const username = 'jeet-43';
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      const data = await response.json();
+      const handleEl = document.getElementById('github-handle');
+      
+      // Update card with fetched data
+      document.getElementById('github-avatar').src = data.avatar_url;
+      document.getElementById('github-name').textContent = data.name || data.login;
+      if (handleEl) {
+        handleEl.textContent = '@' + data.login;
+        handleEl.href = data.html_url || `https://github.com/${data.login}`;
+      }
+    } catch (error) {
+      console.log('GitHub data fetch failed, using defaults');
+      document.getElementById('github-avatar').src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2232%22 fill=%22%2358a6ff%22/%3E%3C/svg%3E';
+    }
+  }
+  
+  // Call the function when page loads
+  fetchGitHubData();
+</script>
 
 <script src="script.js"></script>
 </body>
