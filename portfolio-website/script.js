@@ -82,16 +82,35 @@ if (mobileMenuToggle) {
 
 // ==================== PARALLAX EFFECTS ====================
 
-const sectionNumbers = document.querySelectorAll('.section-number');
+const parallaxConfig = [
+  { selector: '.hero-grid', speed: 0.035, max: 30 },
+  { selector: '.hero-orb-1', speed: 0.06, max: 36 },
+  { selector: '.hero-orb-2', speed: 0.08, max: 42 },
+  { selector: '.section-header', speed: 0.03, max: 22 },
+  { selector: '.section-divider', speed: 0.02, max: 16 },
+  { selector: '.marquee-section', speed: 0.02, max: 14 }
+];
+const parallaxTargets = parallaxConfig.flatMap((cfg) => {
+  return Array.from(document.querySelectorAll(cfg.selector)).map((el) => ({
+    el,
+    speed: cfg.speed,
+    max: cfg.max
+  }));
+});
 let parallaxQueued = false;
 
 function parallaxEffect() {
-  // Section numbers parallax
-  sectionNumbers.forEach((num) => {
-    const rect = num.getBoundingClientRect();
-    const offset = (window.innerHeight - rect.top) * 0.08;
+  if (!parallaxTargets.length) return;
+
+  const viewportCenter = window.innerHeight * 0.5;
+  parallaxTargets.forEach((item) => {
+    const rect = item.el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      num.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+      const elementCenter = rect.top + rect.height * 0.5;
+      const distanceFromCenter = elementCenter - viewportCenter;
+      const unclamped = -distanceFromCenter * item.speed;
+      const offset = Math.max(-item.max, Math.min(item.max, unclamped));
+      item.el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
     }
   });
 }
@@ -105,7 +124,10 @@ function queueParallax() {
   });
 }
 
-window.addEventListener('scroll', queueParallax, { passive: true });
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReducedMotion) {
+  window.addEventListener('scroll', queueParallax, { passive: true });
+}
 
 // ==================== SCROLL REVEAL ANIMATIONS ====================
 
@@ -259,22 +281,30 @@ function initHeroParticles3D() {
   let pointerY = 0;
   let targetPointerX = 0;
   let targetPointerY = 0;
+  let pointerCanvasX = 0;
+  let pointerCanvasY = 0;
+  let targetPointerCanvasX = 0;
+  let targetPointerCanvasY = 0;
+  let pointerActive = false;
+  let visibleParticles = [];
 
   function createParticle() {
-    const z = Math.random() * 820 + 180;
+    const z = Math.random() * 980 + 150;
     return {
       x: (Math.random() - 0.5) * width * 1.2,
       y: (Math.random() - 0.5) * height * 1.2,
       z,
-      radius: Math.random() * 1.1 + 0.35,
-      speed: Math.random() * 0.72 + 0.34,
+      radius: Math.random() * 1.35 + 0.3,
+      speed: Math.random() * 0.95 + 0.38,
       twinkle: Math.random() * Math.PI * 2,
-      hueShift: Math.random() * 0.18 + 0.88
+      hueShift: Math.random() * 0.22 + 0.84,
+      driftX: (Math.random() - 0.5) * 0.42,
+      driftY: (Math.random() - 0.5) * 0.42
     };
   }
 
   function setupParticles() {
-    const count = Math.min(72, Math.max(34, Math.floor(width / 22)));
+    const count = Math.min(260, Math.max(96, Math.floor(width / 8)));
     particles = Array.from({ length: count }, createParticle);
   }
 
@@ -292,11 +322,22 @@ function initHeroParticles3D() {
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    pointerCanvasX = centerX;
+    pointerCanvasY = centerY;
+    targetPointerCanvasX = centerX;
+    targetPointerCanvasY = centerY;
+
     setupParticles();
   }
 
   function drawParticle(p, index, time) {
     p.z -= p.speed;
+    p.x += p.driftX;
+    p.y += p.driftY;
+
+    if (p.x < -width * 0.75 || p.x > width * 0.75) p.driftX *= -1;
+    if (p.y < -height * 0.75 || p.y > height * 0.75) p.driftY *= -1;
+
     if (p.z <= 40) {
       particles[index] = createParticle();
       particles[index].z = 980;
@@ -304,9 +345,19 @@ function initHeroParticles3D() {
     }
 
     const perspective = 540 / p.z;
-    const x = centerX + (p.x + pointerX * 16) * perspective;
-    const y = centerY + (p.y + pointerY * 12) * perspective;
+    let x = centerX + (p.x + pointerX * 22) * perspective;
+    let y = centerY + (p.y + pointerY * 16) * perspective;
     const radius = p.radius * perspective * 2.4;
+
+    const dx = x - pointerCanvasX;
+    const dy = y - pointerCanvasY;
+    const distance = Math.hypot(dx, dy);
+    const influenceRadius = 170;
+    if (pointerActive && distance < influenceRadius && distance > 0.001) {
+      const force = (1 - distance / influenceRadius) * 20 * perspective;
+      x += (dx / distance) * force;
+      y += (dy / distance) * force;
+    }
 
     if (x < -20 || x > width + 20 || y < -20 || y > height + 20) {
       particles[index] = createParticle();
@@ -315,40 +366,98 @@ function initHeroParticles3D() {
 
     const alphaBase = Math.max(0.08, 1 - p.z / 1250);
     const twinkle = (Math.sin(time * 0.0009 + p.twinkle) + 1) / 2;
-    const alpha = Math.min(0.52, alphaBase * (0.45 + twinkle * 0.35));
+    const alpha = Math.min(0.58, alphaBase * (0.48 + twinkle * 0.4));
 
     const gradient = ctx.createRadialGradient(x, y, 0, x, y, Math.max(1.2, radius * 2.2));
-    gradient.addColorStop(0, `rgba(147, 197, 253, ${alpha * p.hueShift})`);
-    gradient.addColorStop(0.55, `rgba(88, 166, 255, ${alpha * 0.45})`);
-    gradient.addColorStop(1, 'rgba(88, 166, 255, 0)');
+    gradient.addColorStop(0, `rgba(127, 195, 222, ${alpha * p.hueShift})`);
+    gradient.addColorStop(0.55, `rgba(61, 156, 207, ${alpha * 0.48})`);
+    gradient.addColorStop(1, 'rgba(61, 156, 207, 0)');
 
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.arc(x, y, Math.max(0.6, radius * 1.7), 0, Math.PI * 2);
     ctx.fill();
+
+    visibleParticles.push({ x, y, alpha });
+  }
+
+  function drawPointerField(time) {
+    const maxLinkDistance = pointerActive ? 150 : 0;
+    if (!maxLinkDistance) return;
+
+    // Draw a subtle energetic aura around the pointer.
+    const pulse = 26 + Math.sin(time * 0.008) * 5;
+    const aura = ctx.createRadialGradient(pointerCanvasX, pointerCanvasY, 0, pointerCanvasX, pointerCanvasY, 160);
+    aura.addColorStop(0, 'rgba(127, 195, 222, 0.16)');
+    aura.addColorStop(0.4, 'rgba(61, 156, 207, 0.08)');
+    aura.addColorStop(1, 'rgba(61, 156, 207, 0)');
+    ctx.fillStyle = aura;
+    ctx.beginPath();
+    ctx.arc(pointerCanvasX, pointerCanvasY, 160, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = 'rgba(127, 195, 222, 0.28)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(pointerCanvasX, pointerCanvasY, pulse, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Draw short streaks from nearby particles to the pointer.
+    for (let i = 0; i < visibleParticles.length; i++) {
+      const p = visibleParticles[i];
+      const dx = p.x - pointerCanvasX;
+      const dy = p.y - pointerCanvasY;
+      const dist = Math.hypot(dx, dy);
+      if (dist >= maxLinkDistance || dist <= 0.001) continue;
+
+      const strength = 1 - dist / maxLinkDistance;
+      ctx.strokeStyle = `rgba(127, 195, 222, ${0.05 + strength * 0.2})`;
+      ctx.lineWidth = 0.6 + strength * 0.6;
+      ctx.beginPath();
+      ctx.moveTo(pointerCanvasX, pointerCanvasY);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+    }
   }
 
   function animate(time) {
     pointerX += (targetPointerX - pointerX) * 0.06;
     pointerY += (targetPointerY - pointerY) * 0.06;
+    pointerCanvasX += (targetPointerCanvasX - pointerCanvasX) * 0.12;
+    pointerCanvasY += (targetPointerCanvasY - pointerCanvasY) * 0.12;
 
     ctx.clearRect(0, 0, width, height);
+    visibleParticles = [];
     for (let i = 0; i < particles.length; i++) {
       drawParticle(particles[i], i, time);
     }
+    drawPointerField(time);
 
     rafId = requestAnimationFrame(animate);
   }
 
   hero.addEventListener('pointermove', (e) => {
     const rect = hero.getBoundingClientRect();
+    pointerActive = true;
     targetPointerX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     targetPointerY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    targetPointerCanvasX = e.clientX - rect.left;
+    targetPointerCanvasY = e.clientY - rect.top;
+  });
+
+  hero.addEventListener('pointerenter', (e) => {
+    const rect = hero.getBoundingClientRect();
+    pointerActive = true;
+    targetPointerCanvasX = e.clientX - rect.left;
+    targetPointerCanvasY = e.clientY - rect.top;
   });
 
   hero.addEventListener('pointerleave', () => {
+    pointerActive = false;
     targetPointerX = 0;
     targetPointerY = 0;
+    targetPointerCanvasX = centerX;
+    targetPointerCanvasY = centerY;
   });
 
   window.addEventListener('resize', debounce(resizeCanvas, 120));
@@ -376,11 +485,11 @@ function handleNavScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
   if (scrollTop > 100) {
-    nav.style.background = 'rgba(11, 18, 25, 0.94)';
-    nav.style.boxShadow = '0 1px 0 rgba(122, 184, 255, 0.14), 0 8px 32px rgba(0, 0, 0, 0.52)';
+    nav.style.background = 'rgba(1, 2, 5, 0.97)';
+    nav.style.boxShadow = '0 1px 0 rgba(61, 156, 207, 0.13), 0 8px 32px rgba(0, 0, 0, 0.68)';
   } else {
-    nav.style.background = 'rgba(11, 18, 25, 0.78)';
-    nav.style.boxShadow = '0 1px 0 rgba(122, 184, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.42)';
+    nav.style.background = 'rgba(1, 2, 5, 0.88)';
+    nav.style.boxShadow = '0 1px 0 rgba(61, 156, 207, 0.07), 0 4px 24px rgba(0, 0, 0, 0.64)';
   }
   
   lastScrollTop = scrollTop;
@@ -437,6 +546,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initial nav state
   handleNavScroll();
+
+  // Initial parallax state
+  if (!prefersReducedMotion) {
+    queueParallax();
+  }
   
   // Initialize skill bars to 0 width
   document.querySelectorAll('.skill-progress').forEach(progress => {
@@ -630,7 +744,7 @@ updateActiveNav();
   if (!emailBtn || !toast) return;
 
   const EMAIL = atob('amVldG1ha2hpamEyQGdtYWlsLmNvbQ==');
-  const MASKED_EMAIL = 'jeetmakhija2 [at] gmail [dot] com';
+  const MASKED_EMAIL = 'jeetmakhija2@gmail.com';
   let toastTimer;
 
   if (emailDisplay) {
