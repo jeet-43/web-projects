@@ -20,7 +20,7 @@ Description: Modern, performant portfolio design
   z-index: 99999;
   transform: translate(-50%, -50%);
   transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.3s ease;
-  box-shadow: 0 0 10px var(--glow-electric);
+  box-shadow: 0 0 6px rgba(122, 207, 245, 0.22);
   will-change: transform;
 }
 
@@ -50,7 +50,7 @@ button:hover ~ .cursor-ring {
   width: 12px;
   height: 12px;
   background: var(--light);
-  box-shadow: 0 0 16px var(--glow-electric);
+  box-shadow: 0 0 10px rgba(122, 207, 245, 0.28);
 }
 
 .cursor-ring.cursor-hover {
@@ -107,19 +107,20 @@ button:hover ~ .cursor-ring {
 }
 
 :root {
-  --electric: #4f9fc5;
-  --cyber: #245e79;
-  --accent-soft: #84b7d1;
-  --dark: #000102;
-  --darker: #000001;
-  --light: #c5d4e2;
-  --gray: #72889d;
-  --border: #0b151f;
-  --glass-bg: rgba(1, 4, 8, 0.88);
-  --glass-border: rgba(118, 156, 184, 0.16);
-  --glow-electric: rgba(79, 159, 197, 0.24);
-  --glow-cyber: rgba(36, 94, 121, 0.2);
+  --electric: #7acff5;
+  --cyber: #63b8e8;
+  --accent-soft: #c1ebff;
+  --dark: #07111a;
+  --darker: #040a12;
+  --light: #f0f6ff;
+  --gray: #a8bed0;
+  --border: #183249;
+  --glass-bg: rgba(7, 17, 26, 0.76);
+  --glass-border: rgba(123, 207, 245, 0.22);
+  --glow-electric: rgba(122, 207, 245, 0.36);
+  --glow-cyber: rgba(99, 184, 232, 0.28);
   --radius-md: 10px;
+  --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
@@ -140,15 +141,15 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000102;
-  background-image: 
-    radial-gradient(at 18% 24%, rgba(79, 159, 197, 0.045) 0px, transparent 54%),
-    radial-gradient(at 84% 74%, rgba(36, 94, 121, 0.042) 0px, transparent 54%),
-    radial-gradient(at 50% 58%, rgba(132, 183, 209, 0.02) 0px, transparent 60%);
+  background: #061018;
+  background-image:
+    radial-gradient(at 18% 24%, rgba(122, 207, 245, 0.09) 0px, transparent 54%),
+    radial-gradient(at 84% 74%, rgba(99, 184, 232, 0.08) 0px, transparent 54%),
+    radial-gradient(at 50% 58%, rgba(193, 235, 255, 0.05) 0px, transparent 60%);
   color: var(--light);
   overflow-x: hidden;
-  line-height: 1.68;
-  letter-spacing: 0.01em;
+  line-height: 1.64;
+  letter-spacing: 0.004em;
   transition: background 0.5s ease, background-image 0.5s ease, color 0.5s ease;
 }
 
@@ -173,16 +174,19 @@ li,
 }
 
 .section-title {
-  color: #c9d8e7;
-  text-shadow: 0 0 18px rgba(79, 159, 197, 0.12);
+  color: #f0f6ff;
+  text-shadow: 0 0 18px rgba(77, 181, 235, 0.2);
 }
 
 .section-desc {
-  color: #778da1;
+  color: #9db2c7;
+  font-size: 16px;
+  line-height: 1.62;
+  max-width: 56ch;
 }
 
 .highlight {
-  text-shadow: 0 0 9px rgba(79, 159, 197, 0.18);
+  text-shadow: 0 0 9px rgba(77, 181, 235, 0.28);
 }
 
 .code-block,
@@ -482,8 +486,8 @@ nav {
 .hero-title {
   font-size: clamp(72px, 12vw, 164px);
   font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -4px;
+  line-height: 0.86;
+  letter-spacing: -3px;
   margin-bottom: 24px;
   font-family: 'Outfit', sans-serif;
 }
@@ -531,7 +535,7 @@ nav {
 }
 
 .hero-subtitle {
-  font-size: clamp(20px, 2.7vw, 30px);
+  font-size: clamp(18px, 2.4vw, 28px);
   color: var(--gray);
   max-width: 760px;
   margin-bottom: 38px;
@@ -543,8 +547,8 @@ nav {
   display: inline-block;
   color: var(--electric);
   font-weight: 600;
-  font-size: clamp(21px, 2.8vw, 34px);
-  line-height: 1.2;
+  font-size: clamp(20px, 2.5vw, 32px);
+  line-height: 1.16;
   position: relative;
   min-width: 200px;
   transition: opacity 0.5s ease, color 0.5s ease;
@@ -840,24 +844,24 @@ nav {
 /* ==================== SECTION STYLES ==================== */
 
 .section {
-  padding: clamp(80px, 10vw, 120px) clamp(20px, 3.5vw, 40px);
+  padding: clamp(68px, 8vw, 104px) clamp(20px, 3.5vw, 40px);
   position: relative;
 }
 
 .section-header {
-  margin-bottom: clamp(48px, 7vw, 80px);
+  margin-bottom: clamp(36px, 5vw, 64px);
 }
 
 .section-title {
-  font-size: clamp(40px, 8vw, 80px);
+  font-size: clamp(38px, 7.2vw, 74px);
   font-weight: 800;
-  letter-spacing: -2px;
+  letter-spacing: -2.5px;
   display: block;
   margin-bottom: 20px;
 }
 
 .section-title.about-subheading {
-  font-size: clamp(24px, 4.2vw, 34px);
+  font-size: clamp(22px, 3.8vw, 32px);
   letter-spacing: -0.5px;
   font-weight: 700;
   display: inline-flex;
@@ -906,13 +910,13 @@ nav {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 100px;
+  gap: 72px;
   align-items: start;
 }
 
 .about-text {
-  font-size: 20px;
-  line-height: 1.9;
+  font-size: 18px;
+  line-height: 1.78;
   color: var(--gray);
   max-width: 70ch;
 }
@@ -1021,7 +1025,7 @@ nav {
 }
 
 .skills-category {
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .category-label {
@@ -1355,8 +1359,8 @@ nav {
 .tech-tag {
   padding: 8px 16px;
   border: 1px solid var(--border);
-  font-size: 12px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-size: 17px;
+  line-height: 1.78;
   color: var(--gray);
   transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
   border-radius: 4px;
@@ -1454,11 +1458,11 @@ nav {
 }
 
 .contact-title {
-  font-size: clamp(40px, 8vw, 100px);
+  font-size: clamp(38px, 7.2vw, 92px);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.04;
   margin-bottom: 40px;
-  letter-spacing: -3px;
+  letter-spacing: -2.5px;
 }
 
 .contact-subtitle {
@@ -1585,11 +1589,11 @@ nav {
 }
 
 .footer-link:hover {
-  color: #9ab4c9;
+  color: var(--electric);
 }
 
 footer {
-  padding: 44px 40px;
+  padding: 60px 40px;
   border-top: 1px solid var(--border);
   background: var(--darker);
 }
@@ -1613,7 +1617,7 @@ footer {
   font-size: 14px;
   color: var(--gray);
   justify-self: end;
-  margin-right: 18px;
+  margin-right: 28px;
 }
 
 .footer-nav {
@@ -1688,7 +1692,7 @@ button:focus-visible,
 .section-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(128, 150, 171, 0.24), rgba(128, 150, 171, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.3), rgba(88, 166, 255, 0.1), transparent);
   position: relative;
   overflow: visible;
   margin: 0;
@@ -1704,17 +1708,17 @@ button:focus-visible,
   height: 6px;
   border-radius: 50%;
   background: var(--electric);
-  box-shadow: 0 0 10px rgba(91, 141, 184, 0.18);
-  animation: dividerPulse 4.5s ease-in-out infinite;
+  box-shadow: 0 0 12px var(--glow-electric), 0 0 24px var(--glow-electric);
+  animation: dividerPulse 3s ease-in-out infinite;
 }
 
 @keyframes dividerPulse {
   0%, 100% { 
-    box-shadow: 0 0 10px rgba(91, 141, 184, 0.18);
+    box-shadow: 0 0 12px var(--glow-electric), 0 0 24px var(--glow-electric);
     transform: translate(-50%, -50%) scale(1);
   }
   50% { 
-    box-shadow: 0 0 16px rgba(91, 141, 184, 0.2);
+    box-shadow: 0 0 20px var(--glow-electric), 0 0 40px var(--glow-electric), 0 0 60px rgba(88,166,255,0.1);
     transform: translate(-50%, -50%) scale(1.4);
   }
 }
@@ -1727,7 +1731,7 @@ button:focus-visible,
   left: -100%;
   width: 40%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(128, 150, 171, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.6), transparent);
   animation: scanLine 4s ease-in-out infinite;
 }
 
@@ -1848,7 +1852,7 @@ button:focus-visible,
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
   transform: translateY(20px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   padding: 0;
 }
 
@@ -1861,7 +1865,7 @@ button:focus-visible,
 .back-to-top:hover {
   color: var(--electric);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 0 12px rgba(91, 141, 184, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 30px var(--glow-electric);
   background: rgba(13, 17, 23, 0.9);
 }
 
@@ -1876,7 +1880,7 @@ button:focus-visible,
 
 .progress-ring-fill {
   transition: stroke-dashoffset 0.15s ease;
-  filter: drop-shadow(0 0 3px rgba(91,141,184,0.35));
+  filter: drop-shadow(0 0 4px rgba(88,166,255,0.6));
 }
 
 .back-to-top-arrow {
@@ -1901,7 +1905,7 @@ button:focus-visible,
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(128, 150, 171, 0.4), rgba(128, 150, 171, 0.2), transparent);
+  background: linear-gradient(to bottom, transparent, #58a6ff, #1f6feb, transparent);
   opacity: 0.4;
 }
 
@@ -1928,43 +1932,43 @@ button:focus-visible,
   height: 14px;
   border-radius: 50%;
   background: var(--electric);
-  box-shadow: 0 0 0 4px rgba(128, 150, 171, 0.1), 0 0 14px rgba(91, 141, 184, 0.16);
+  box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.15), 0 0 20px var(--glow-electric);
   z-index: 2;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .timeline-item:nth-child(3n) .timeline-dot {
-  background: #7da6c9;
-  box-shadow: 0 0 0 4px rgba(125, 166, 201, 0.12), 0 0 14px rgba(125, 166, 201, 0.18);
+  background: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15), 0 0 20px rgba(96, 165, 250, 0.4);
 }
 
 .timeline-item:nth-child(3n+2) .timeline-dot {
-  background: #9fb8cb;
-  box-shadow: 0 0 0 4px rgba(159, 184, 203, 0.12), 0 0 14px rgba(159, 184, 203, 0.18);
+  background: #93c5fd;
+  box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.15), 0 0 20px rgba(147, 197, 253, 0.4);
 }
 
 .timeline-card {
   background: rgba(0, 0, 0, 0.62);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(128, 150, 171, 0.16);
+  border: 1px solid rgba(118, 156, 184, 0.2);
   padding: 16px 20px;
   max-width: 460px;
   position: relative;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 }
 
 .timeline-card:hover {
-  border-color: rgba(128, 150, 171, 0.24);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24), 0 0 0 1px rgba(128, 150, 171, 0.1);
+  border-color: rgba(88, 166, 255, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(88, 166, 255, 0.15), 0 0 30px var(--glow-electric);
 }
 
 .timeline-item:nth-child(3n) .timeline-card:hover {
-  border-color: rgba(125, 166, 201, 0.26);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24), 0 0 18px rgba(125, 166, 201, 0.14);
+  border-color: rgba(96, 165, 250, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(96, 165, 250, 0.3);
 }
 
 .timeline-card::before {
@@ -1974,15 +1978,15 @@ button:focus-visible,
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, rgba(128, 150, 171, 0.7), transparent);
+  background: linear-gradient(90deg, rgba(93, 169, 214, 0.72), transparent);
 }
 
 .timeline-item:nth-child(even) .timeline-card::before {
-  background: linear-gradient(90deg, transparent, rgba(128, 150, 171, 0.7));
+  background: linear-gradient(90deg, transparent, rgba(93, 169, 214, 0.72));
 }
 
 .timeline-item:nth-child(3n) .timeline-card::before {
-  background: linear-gradient(90deg, #7da6c9, transparent);
+  background: linear-gradient(90deg, #60a5fa, transparent);
 }
 
 .timeline-year {
@@ -1990,24 +1994,24 @@ button:focus-visible,
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.6px;
-  color: #8ca7bf;
+  color: var(--electric);
   text-transform: uppercase;
   margin-bottom: 8px;
 }
 
 .timeline-item:nth-child(3n) .timeline-year {
-  color: #90aec8;
+  color: #60a5fa;
 }
 
 .timeline-item:nth-child(3n+2) .timeline-year {
-  color: #a3b8c9;
+  color: #93c5fd;
 }
 
 .timeline-type {
   font-size: 10px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #8a97a5;
+  color: #7e8f9f;
   font-family: 'IBM Plex Mono', monospace;
   margin-bottom: 6px;
 }
@@ -2015,14 +2019,14 @@ button:focus-visible,
 .timeline-title {
   font-size: 15px;
   font-weight: 700;
-  color: #d2dbe4;
+  color: #c0cfde;
   margin-bottom: 6px;
   line-height: 1.3;
 }
 
 .timeline-desc {
   font-size: 12px;
-  color: #8995a2;
+  color: #7f92a5;
   line-height: 1.45;
 }
 
@@ -2032,10 +2036,10 @@ button:focus-visible,
   gap: 6px;
   margin-top: 10px;
   padding: 3px 9px;
-  border: 1px solid rgba(128, 150, 171, 0.18);
+  border: 1px solid rgba(118, 156, 184, 0.24);
   font-size: 9px;
   font-family: 'IBM Plex Mono', monospace;
-  color: #8f9ead;
+  color: #8799ac;
   letter-spacing: 0.8px;
   border-radius: 4px;
 }
@@ -2108,21 +2112,103 @@ button:focus-visible,
   }
 
   .hero {
-    padding: 74px 20px;
+    padding: 72px 16px 44px;
+    overflow: visible;
+  }
+
+  .hero-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 15vw, 82px);
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+    line-height: 0.98;
+  }
+
+  .hero-title .line {
+    overflow: visible;
+  }
+
+  .hero-title .line span {
+    padding-bottom: 0.08em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(18px, 4.8vw, 24px);
+    margin-bottom: 24px;
+    line-height: 1.35;
+  }
+
+  .hero-role-text {
+    min-width: 0;
+    line-height: 1.3;
+    display: inline-block;
+  }
+
+  .hero-cta {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .github-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .github-card-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .github-info {
+    text-align: center;
+  }
+
+  .github-avatar {
+    width: min(72vw, 260px);
+    height: min(72vw, 260px);
   }
 
   .section {
-    padding: 80px 20px;
+    padding: 64px 16px;
   }
 
   .section-title {
+    line-height: 1.08;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
 
+  .section-title.about-subheading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+  }
+
   .section-desc {
     margin-left: 0;
+    line-height: 1.5;
   }
 
   .skills-list {
@@ -2131,6 +2217,42 @@ button:focus-visible,
 
   .contact-methods {
     grid-template-columns: 1fr;
+  }
+
+  .about-content,
+  .skills-list,
+  .learning-grid,
+  .projects-container,
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .project-header,
+  .project-body {
+    padding: 24px 18px;
+  }
+
+  .project-info h3 {
+    font-size: 26px;
+    line-height: 1.1;
+  }
+
+  .project-description {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .tech-tag,
+  .timeline-tag {
+    font-size: 10px;
+  }
+
+  .timeline-card {
+    padding: 14px 16px;
+  }
+
+  .contact-item {
+    padding: 24px 18px;
   }
 
   .footer-content {
@@ -2169,6 +2291,16 @@ button:focus-visible,
     max-width: 100%;
     padding: 14px 16px;
   }
+
+  .timeline-title,
+  .cert-name,
+  .contact-title {
+    line-height: 1.15;
+  }
+
+  .contact-title {
+    text-align: center;
+  }
   
   .back-to-top {
     bottom: 20px;
@@ -2194,10 +2326,14 @@ button:focus-visible,
   }
   .hero-subtitle {
     font-size: clamp(18px, 3vw, 24px);
+    line-height: 0.98;
     margin-bottom: 30px;
+  
   }
   .hero-role-text {
-    font-size: clamp(20px, 3.2vw, 28px);
+    line-height: 1.02;
+    margin-bottom: 14px;
+    letter-spacing: -2px;
   }
   .hero-cta .btn {
     padding: 16px 32px;
@@ -2210,78 +2346,98 @@ button:focus-visible,
     margin-left: 0;
   }
   .github-card-header {
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
   .github-info {
-    text-align: left;
+    text-align: center;
+    width: 100%;
   }
   .github-avatar {
-    width: 260px;
-    height: 260px;
+    width: min(64vw, 260px);
+    height: min(64vw, 260px);
+    align-self: center;
+  }
+  .github-socials {
+    justify-content: center;
   }
 }
 
 @media (max-width: 400px) {
+  .hero-content {
+    padding-top: 18px;
+  }
+
+  .hero-title,
+  .hero-title .line,
+  .hero-title .line span {
+    overflow: visible;
+  }
+
+  .hero-title .line,
+  .hero-title .line span {
+    display: block;
+  }
+
+  .hero-title .line span {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: currentColor !important;
+    padding: 0.04em 0;
+  }
+
+  .hero-title .line:nth-child(1) span,
+  .hero-title .line:nth-child(2) span {
+    color: var(--light) !important;
+    text-shadow: 0 0 12px rgba(77, 181, 235, 0.16);
+  }
+
   .hero-title {
-    letter-spacing: -3px;
+    letter-spacing: -1px;
+  }
+  .hero {
+    padding: 64px 14px 36px;
+  }
+  .hero-title {
+    font-size: clamp(38px, 15vw, 58px);
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+  .hero-subtitle {
+    font-size: clamp(17px, 5vw, 21px);
+  }
+  .section-title {
+    font-size: clamp(28px, 9vw, 40px);
+  }
+  .hero-cta .btn {
+    max-width: 100%;
+  }
+  .github-avatar {
+    width: min(76vw, 220px);
+    height: min(76vw, 220px);
+  }
+  .github-card-header {
+    gap: 12px;
+  }
+  .github-name {
+    font-size: 24px;
+  }
+  .github-handle {
+    font-size: 16px;
   }
   .section {
-    padding: 60px 16px;
+    padding: 52px 14px;
   }
   .project-header,
   .project-body {
-    padding: 24px 16px;
+    padding: 20px 14px;
   }
   .contact-item {
-    padding: 28px 20px;
-  }
-  .hero {
-    padding: 68px 16px;
-    align-items: center;
-  }
-  .hero-wrapper {
-    flex-direction: column;
-    gap: 28px;
-    align-items: center;
-    max-width: 100%;
-  }
-  .hero-content {
-    width: 100%;
-    text-align: center;
-    max-width: 100%;
-  }
-  .hero-subtitle {
-    margin-bottom: 24px;
-  }
-  .hero-role-text {
-    font-size: clamp(18px, 6vw, 24px);
-  }
-  .hero-cta {
-    justify-content: center;
-    gap: 12px;
-  }
-  .hero-cta .btn {
-    width: 100%;
-    text-align: center;
-    padding: 14px 20px;
-  }
-  .github-card {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0 auto;
-  }
-  .github-card-header {
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-  }
-  .github-info {
-    text-align: center;
-  }
-  .github-avatar {
-    width: 210px;
-    height: 210px;
+    padding: 20px 16px;
   }
 }
 
