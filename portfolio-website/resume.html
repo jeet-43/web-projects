@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jeet Makhija resume - Software Engineering intern candidate focused on C++, DSA, and web development." />
+  <meta name="description" content="Jeet Makhija resume - Software Engineering Intern candidate focused on C++, DSA, and web development." />
   <title>Jeet Makhija | Resume</title>
   <style>
     :root {
-      --text: #111111;
-      --muted: #4a4a4a;
-      --line: #dcdcdc;
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #d1d5db;
+      --accent: #1d4ed8;
       --bg: #ffffff;
-      --accent: #0f172a;
     }
 
     * {
@@ -21,169 +21,115 @@
     }
 
     html {
-      font-size: 14px;
+      font-size: 16px;
     }
 
     body {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: #f5f6f8;
+      background: var(--bg);
       line-height: 1.45;
       padding: 24px;
     }
 
-    .page {
-      width: min(900px, 100%);
+    .resume {
+      max-width: 860px;
       margin: 0 auto;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      padding: 28px 30px;
     }
 
-    .name {
-      font-size: 2rem;
+    .header {
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: 0.2px;
-      color: var(--accent);
+      margin-bottom: 6px;
     }
 
     .headline {
-      margin-top: 4px;
+      font-size: 0.95rem;
       color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .contact {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .contact a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-
-    .contact a:hover {
-      border-bottom-color: var(--muted);
-    }
-
-    .section {
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1.3px;
-      color: var(--muted);
-      font-weight: 700;
       margin-bottom: 8px;
     }
 
-    .summary {
-      color: #1f1f1f;
-      font-size: 0.96rem;
+    .contact {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .skills-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 18px;
-      list-style: none;
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    .skills-list li {
-      color: #1f1f1f;
+    .section {
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+      margin-bottom: 8px;
+    }
+
+    p,
+    li,
+    .meta {
       font-size: 0.93rem;
     }
 
     .entry {
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
-    .entry:first-of-type {
-      margin-top: 0;
-    }
-
-    .entry-head {
+    .entry-top {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 2px;
       flex-wrap: wrap;
     }
 
     .role {
-      font-size: 0.98rem;
       font-weight: 700;
-      color: #121212;
     }
 
-    .date {
-      font-size: 0.86rem;
+    .meta {
       color: var(--muted);
-      white-space: nowrap;
     }
 
-    .org {
-      margin-top: 2px;
-      color: #303030;
-      font-size: 0.92rem;
-    }
-
-    .bullets {
-      margin-top: 6px;
+    ul {
       padding-left: 18px;
+      margin-top: 4px;
     }
 
-    .bullets li {
-      margin: 4px 0;
-      color: #1f1f1f;
-      font-size: 0.92rem;
+    li {
+      margin-bottom: 3px;
     }
 
-    .links {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.88rem;
+    .skills {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
     }
 
-    .links a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid #b8b8b8;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 10px;
-      }
-
-      .page {
-        padding: 18px 16px;
-      }
-
-      .skills-list {
-        grid-template-columns: 1fr;
-      }
+    .skills strong {
+      min-width: 140px;
+      display: inline-block;
     }
 
     @media print {
       body {
-        background: #ffffff;
-        padding: 0;
-      }
-
-      .page {
-        width: 100%;
-        border: 0;
         padding: 0;
       }
 
@@ -195,140 +141,98 @@
   </style>
 </head>
 <body>
-  <main class="page">
-    <header>
-      <h1 class="name">Jeet Makhija</h1>
-      <p class="headline">Software Engineering Intern Candidate | C++ | DSA | Web Development</p>
+  <main class="resume">
+    <header class="header">
+      <h1>Jeet Makhija</h1>
+      <p class="headline">Software Engineering Intern Candidate | C++, DSA, JavaScript | Delhi, India</p>
       <div class="contact">
-        <span>Delhi, India</span>
-        <span>|</span>
-        <a href="mailto:jeetmakhija2@gmail.com">jeetmakhija2@gmail.com</a>
+        <span>jeetmakhija2@gmail.com</span>
         <span>|</span>
         <a href="https://github.com/jeet-43" target="_blank" rel="noopener noreferrer">github.com/jeet-43</a>
         <span>|</span>
         <a href="https://www.linkedin.com/in/jeet-makhija/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jeet-makhija</a>
         <span>|</span>
-        <a href="https://jeet-dev.netlify.app/" target="_blank" rel="noopener noreferrer">jeet-dev.netlify.app</a>
+        <a href="https://jeet-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
       </div>
     </header>
 
     <section class="section">
-      <h2 class="section-title">Summary</h2>
-      <p class="summary">
-        BCA student with strong fundamentals in C++, data structures, and algorithms, plus hands-on web development experience.
-        Built and shipped projects end-to-end, including an interactive algorithm visualizer covering 34 algorithms.
-        Looking for a software engineering internship where I can contribute quickly, write clean code, and keep improving through real product work.
-      </p>
+      <h2>Summary</h2>
+      <p>BCA student with strong fundamentals in data structures, algorithms, and frontend development. Built and deployed multiple projects, including an algorithm visualizer covering 34 algorithms. Looking for a Software Engineering internship to contribute to product development and problem solving in a real-world team environment.</p>
     </section>
 
     <section class="section">
-      <h2 class="section-title">Skills</h2>
-      <ul class="skills-list">
-        <li>C++ (Primary), Python, JavaScript</li>
-        <li>Data Structures and Algorithms</li>
-        <li>HTML5, CSS3, Responsive UI</li>
-        <li>Git, GitHub, VS Code, Netlify</li>
-        <li>MySQL, DBMS fundamentals</li>
-        <li>Problem solving with LeetCode practice</li>
+      <h2>Projects</h2>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="role">Algo-Sight | JavaScript, HTML, CSS</div>
+          <div class="meta">Jan 2026 - Feb 2026</div>
+        </div>
+        <ul>
+          <li>Built an interactive algorithm learning platform covering 34 algorithms with step-by-step visualization.</li>
+          <li>Implemented controls for speed, playback, learn mode, race mode, and pathfinding grid interaction.</li>
+          <li>Deployed production-ready app: <a href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener noreferrer">Live Demo</a> | <a href="https://github.com/jeet-43/algo-sight" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="role">Portfolio Website | HTML, CSS, Vanilla JavaScript</div>
+          <div class="meta">Jan 2026</div>
+        </div>
+        <ul>
+          <li>Designed and developed a fully responsive personal portfolio without frameworks.</li>
+          <li>Added smooth UI interactions, custom animations, and optimized page structure for performance.</li>
+          <li><a href="https://jeet-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Live Site</a> | <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="role">DSA Solutions Repository | C++</div>
+          <div class="meta">Jan 2026 - Present</div>
+        </div>
+        <ul>
+          <li>Maintaining a topic-wise repository of DSA solutions focused on clean logic and time complexity.</li>
+          <li>Covered arrays, strings, linked lists, trees, recursion, sorting, searching, and ongoing DP practice.</li>
+          <li><a href="https://github.com/jeet-43/dsa-cpp" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-top">
+          <div class="role">Bachelor of Computer Applications (BCA), JIMS, Delhi</div>
+          <div class="meta">2025 - Present</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-top">
+          <div class="role">Class XII (Commerce), CBSE</div>
+          <div class="meta">Completed 2025</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <p><strong>Languages:</strong> C++, JavaScript, Python, HTML, CSS, MySQL</p>
+        <p><strong>Core CS:</strong> Data Structures, Algorithms, Problem Solving, Time Complexity Analysis</p>
+        <p><strong>Tools:</strong> Git, GitHub, VS Code, Netlify</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Certifications</h2>
+      <ul>
+        <li>AI Fluency for Students - Anthropic (2026)</li>
+        <li>Claude 101 - Anthropic (2026)</li>
+        <li>Claude Code in Action - Anthropic (2026)</li>
       </ul>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Projects</h2>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">Algo-Sight</h3>
-          <span class="date">Jan 2026 - Feb 2026</span>
-        </div>
-        <p class="org">JavaScript, HTML, CSS | Interactive DSA Learning Platform</p>
-        <ul class="bullets">
-          <li>Built a browser-based platform visualizing 34 algorithms with step-by-step playback and controls.</li>
-          <li>Implemented learn mode, race mode, pathfinding grid, and live metrics in a responsive interface.</li>
-          <li>Designed for clarity and smooth interactions to make algorithm behavior easier to understand.</li>
-        </ul>
-        <p class="links">
-          Live: <a href="https://algo-sight.netlify.app/#app" target="_blank" rel="noopener noreferrer">algo-sight.netlify.app</a>
-          | Code: <a href="https://github.com/jeet-43/algo-sight" target="_blank" rel="noopener noreferrer">github.com/jeet-43/algo-sight</a>
-        </p>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">Personal Portfolio Website</h3>
-          <span class="date">Jan 2026</span>
-        </div>
-        <p class="org">Vanilla JavaScript, HTML, CSS</p>
-        <ul class="bullets">
-          <li>Developed and deployed a fully responsive portfolio site from scratch.</li>
-          <li>Implemented interactive UI features, animations, and reusable section components.</li>
-          <li>Focused on clean visual hierarchy, performance, and maintainable front-end structure.</li>
-        </ul>
-        <p class="links">
-          Live: <a href="https://jeet-dev.netlify.app/" target="_blank" rel="noopener noreferrer">jeet-dev.netlify.app</a>
-          | Code: <a href="https://github.com/jeet-43/web-projects/tree/main/portfolio-website" target="_blank" rel="noopener noreferrer">github.com/jeet-43/web-projects</a>
-        </p>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">DSA Solutions Repository</h3>
-          <span class="date">Jan 2026 - Present</span>
-        </div>
-        <p class="org">C++, LeetCode, GitHub</p>
-        <ul class="bullets">
-          <li>Maintaining a structured repository of DSA solutions written in clean C++.</li>
-          <li>Covering arrays, strings, linked lists, trees, recursion, sorting, and searching topics.</li>
-        </ul>
-        <p class="links">
-          Code: <a href="https://github.com/jeet-43/dsa-cpp" target="_blank" rel="noopener noreferrer">github.com/jeet-43/dsa-cpp</a>
-        </p>
-      </article>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Education</h2>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">Bachelor of Computer Applications (BCA)</h3>
-          <span class="date">2025 - Present</span>
-        </div>
-        <p class="org">Jagannath Community College (JIMS), Delhi</p>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">Class XII (CBSE), Commerce</h3>
-          <span class="date">Completed 2025</span>
-        </div>
-        <p class="org">Happy Home Public School, Delhi</p>
-      </article>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Certifications</h2>
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">AI Fluency for Students - Anthropic</h3>
-          <span class="date">2026</span>
-        </div>
-        <p class="links"><a href="https://verify.skilljar.com/c/8bra9ib8j458" target="_blank" rel="noopener noreferrer">Verify credential</a></p>
-      </article>
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">Claude 101 - Anthropic</h3>
-          <span class="date">2026</span>
-        </div>
-        <p class="links"><a href="https://verify.skilljar.com/c/mzbza4pjeotf" target="_blank" rel="noopener noreferrer">Verify credential</a></p>
-      </article>
-      <article class="entry">
-        <div class="entry-head">
-          <h3 class="role">Claude Code in Action - Anthropic</h3>
-          <span class="date">2026</span>
-        </div>
-        <p class="links"><a href="https://verify.skilljar.com/c/mki7qt83ht2d" target="_blank" rel="noopener noreferrer">Verify credential</a></p>
-      </article>
     </section>
   </main>
 </body>
