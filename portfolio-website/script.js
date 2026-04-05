@@ -138,29 +138,6 @@ const revealObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
       
-      // Animate learning progress bars
-      if (entry.target.classList.contains('learning-card')) {
-        const progressFill = entry.target.querySelector('.learning-progress-fill');
-        if (progressFill) {
-          const width = progressFill.style.width;
-          progressFill.style.width = '0%';
-          setTimeout(() => {
-            progressFill.style.width = width;
-          }, 100);
-        }
-      }
-      
-      // Animate skill bars
-      if (entry.target.classList.contains('skill-item')) {
-        const skillProgress = entry.target.querySelector('.skill-progress');
-        if (skillProgress) {
-          const progress = skillProgress.getAttribute('data-progress');
-          setTimeout(() => {
-            skillProgress.style.width = `${progress}%`;
-          }, 100);
-        }
-      }
-      
       // Unobserve after revealing to improve performance
       revealObserver.unobserve(entry.target);
     }
@@ -551,11 +528,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!prefersReducedMotion) {
     queueParallax();
   }
-  
-  // Initialize skill bars to 0 width
-  document.querySelectorAll('.skill-progress').forEach(progress => {
-    progress.style.width = '0%';
-  });
   
   // Add loaded class to body for CSS animations
   setTimeout(() => {
