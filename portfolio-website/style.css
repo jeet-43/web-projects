@@ -1120,33 +1120,40 @@ nav {
   margin-bottom: 15px;
 }
 
-/* Skill Progress Bars */
-.skill-bar {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
+.skill-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
 }
 
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--electric), #1f6feb);
-  border-radius: 2px;
-  width: 0;
-  transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1) !important;
-  position: relative;
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  border: 1px solid rgba(123, 207, 245, 0.4);
+  border-radius: 999px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: #d7f0ff;
+  background: linear-gradient(180deg, rgba(16, 32, 46, 0.88), rgba(8, 17, 27, 0.88));
+  box-shadow: 0 0 0 1px rgba(123, 207, 245, 0.08), 0 0 14px rgba(122, 207, 245, 0.16);
+  transition: border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
-.skill-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
+.skill-note {
+  font-size: 11.5px;
+  color: #a8bfd1;
+  letter-spacing: 0.01em;
+}
+
+.skill-item:hover .skill-pill {
+  border-color: rgba(123, 207, 245, 0.62);
+  color: #e6f5ff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(123, 207, 245, 0.15), 0 0 18px rgba(122, 207, 245, 0.26), 0 0 30px rgba(99, 184, 232, 0.12);
 }
 
 @keyframes shimmer {
@@ -1238,46 +1245,44 @@ nav {
   margin-bottom: 25px;
 }
 
-.learning-progress-container {
+.learning-meta {
   display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.learning-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 15px;
-}
-
-.learning-progress-bar {
-  flex: 1;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-}
-
-.learning-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--electric), #1f6feb);
-  border-radius: 3px;
-  transition: width 1s cubic-bezier(0.65, 0, 0.35, 1);
-  position: relative;
-}
-
-.learning-progress-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
-}
-
-.learning-percentage {
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(123, 207, 245, 0.42);
+  background: linear-gradient(180deg, rgba(16, 32, 46, 0.84), rgba(8, 17, 27, 0.86));
+  color: #dff2ff;
+  font-size: 10.5px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--electric);
-  min-width: 45px;
+  letter-spacing: 0.65px;
+  box-shadow: 0 0 0 1px rgba(123, 207, 245, 0.08), 0 0 12px rgba(122, 207, 245, 0.14);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease, color 0.22s ease;
+}
+
+.learning-chip.muted {
+  border-color: rgba(129, 149, 167, 0.26);
+  color: #9fb2c4;
+  box-shadow: none;
+}
+
+.learning-card:hover .learning-chip {
+  border-color: rgba(123, 207, 245, 0.58);
+  color: #e8f7ff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(123, 207, 245, 0.14), 0 0 16px rgba(122, 207, 245, 0.24);
+}
+
+.learning-card:hover .learning-chip.muted {
+  border-color: rgba(142, 163, 182, 0.36);
+  color: #b6cad9;
+  box-shadow: none;
 }
 
 /* ==================== PROJECTS SECTION ==================== */
